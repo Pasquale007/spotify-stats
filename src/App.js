@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import Layout from "./Layout";
 
-function App() {
+//import pages
+import Login from "./pages/SpotifyLogin/Login";
+import Logout from "./pages/SpotifyLogout/Logout";
+import HomePage from "./pages/Home/HomePage";
+import Callback from "./Callback";
+import Tracks from "./pages/Tracks/Tracks";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/callback" element={<Callback />} />
+          <Route path="/tracks" element={<Tracks />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter >
   );
-}
 
-export default App;
+}

@@ -1,0 +1,32 @@
+.main {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10%;
+    width: 100%;
+}
+
+.root {
+    text-align: center;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.displayTopTracks {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px black;
+}
+
+.displayTopArtists {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px black;
+}

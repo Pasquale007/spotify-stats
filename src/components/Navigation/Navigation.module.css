@@ -1,0 +1,26 @@
+.main {
+    background-color: var(--secondary-color);
+
+}
+
+.list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.list :nth-child(n) {
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+
+}
+
+.list :nth-child(n):hover {
+    cursor: pointer;
+    color: var(--signal-color);
+
+}

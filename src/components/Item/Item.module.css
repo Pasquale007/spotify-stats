@@ -1,0 +1,18 @@
+.main {
+    font-size: 150%;
+}
+
+.main:hover {
+    cursor: pointer;
+}
+
+.main p {
+    padding: 5px;
+    color: var(--font-color2);
+    text-decoration: none;
+    border-radius: 28px;
+}
+
+.main p:hover {
+    background-color: var(--signal-color2);
+}

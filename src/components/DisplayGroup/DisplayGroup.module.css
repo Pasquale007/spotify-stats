@@ -1,0 +1,10 @@
+.main {
+    background-color: rgb(38, 38, 38);
+    padding: 2%;
+    border-radius: 15%;
+    height: fit-content;
+}
+
+.link {
+    text-decoration: none;
+}
