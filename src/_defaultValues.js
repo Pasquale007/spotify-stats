@@ -1,4 +1,4 @@
-export const _HomepageName = "SpotUview";
+export const _HomepageName = "WhatsUSpot";
 
 //Kontakt
 export const _copyright = "2022";

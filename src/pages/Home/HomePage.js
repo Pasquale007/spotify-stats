@@ -5,6 +5,7 @@ import { endpoint } from '../../_defaultValues'
 
 import Track from '../../components/Track/Track';
 import DisplayGroup from '../../components/DisplayGroup/DisplayGroup';
+import HelperFunctions from '../../HelperFunctions';
 
 
 export default function HomePage() {
@@ -16,37 +17,21 @@ export default function HomePage() {
         fetchTopArtists();
     }, [])
 
-    useEffect(() => {
-        console.log("Tracks reloaded");
-    }, [topTracks])
-
-    function fetchTopTracks() {
-        axios.get(endpoint + "/me/top/tracks", {
-            type: "tracks",
-            headers: {
-                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-            }
-        })
-            .then(response => { setTopTracks(response.data.items); })
-            .catch(err => console.log(err));
+    async function fetchTopTracks() {
+        let topTracks = await HelperFunctions.fetchTopTracks(5);
+        setTopTracks(topTracks);
     }
 
-    function fetchTopArtists() {
-        axios.get(endpoint + "/me/top/artists", {
-            type: "artists",
-            headers: {
-                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-            }
-        })
-            .then(response => { setTopArtists(response.data.items) })
-            .catch(err => console.log(err));
+    async function fetchTopArtists() {
+        let topArtists = await HelperFunctions.fetchTopArtist(5);
+        setTopArtists(topArtists);
     }
 
     return (
         <div className={style.root}>
             <h1>Home</h1>
             <div className={style.main}>
-                <DisplayGroup myData={topTracks} number={5} title={"Deine Top Tracks"} fontColor="white" linkToMore="/tracks"/>
+                <DisplayGroup myData={topTracks} number={5} title={"Deine Top Tracks"} fontColor="white" linkToMore="/tracks" />
                 <DisplayGroup myData={topArtists} number={5} title={"Deine Top Künstler"} fontColor="white" linkToMore="/creator" />
             </div>
         </div >
