@@ -10,7 +10,6 @@ axios.interceptors.response.use((response) => {
         console.log("Auth expires");
         const originalRequest = error.config;
         if (!(error.response.status === 401 && !originalRequest._retry)) {
-            console.log("isRetry");
             return;
         }
         originalRequest._retry = true;
@@ -68,6 +67,31 @@ export default class HelperFunctions {
             time_range: range,
         }
         let promise = await axios.get(endpoint + "/me/top/artists?" + querystring.stringify(data), {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        })
+        if (promise) {
+            return promise.data.items;
+        }
+        return [];
+    }
+
+
+    static async getTrackInfo(track) {
+        let promise = await axios.get(endpoint + "/tracks/" + track.id, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        })
+        if (promise) {
+            return promise.data.items;
+        }
+        return [];
+    }
+
+    static async getTrackInfoHref(track) {
+        let promise = await axios.get(track.href, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }

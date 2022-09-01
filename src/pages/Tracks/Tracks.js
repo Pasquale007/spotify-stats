@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import style from './Tracks.module.css'
 
 import HelperFunctions from '../../HelperFunctions.js'
-import DisplayGroup from '../../components/DisplayGroup/DisplayGroup';
+import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 export default function Tracks() {
 
     const [tracks, setTracks] = useState([]);
@@ -12,10 +12,6 @@ export default function Tracks() {
         fetchTracks();
     }, []);
 
-    useEffect(() => {
-    }, [tracks]);
-
-
     async function fetchTracks() {
         let data = await HelperFunctions.fetchTopTracks(visibleData);
         setTracks(data);
@@ -24,9 +20,8 @@ export default function Tracks() {
     return (
         <div className={style.main}>
             <h1>Tracks</h1>
-
             <div className={style.content}>
-                <DisplayGroup myData={tracks} title={"Deine Top Tracks"} fontColor="white" linkToMore="/tracks" />
+                <DetailedTracks data={tracks} />
             </div>
         </div>
     );

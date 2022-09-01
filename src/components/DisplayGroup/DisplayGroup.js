@@ -24,13 +24,16 @@ export default function DisplayGroup({ myData, title, fontColor, linkToMore }) {
                     </div>
                 );
             })}
-            <Link
-                className={style.link}
-                to={{
-                    pathname: linkToMore,
-                }}>
-                <p style={{ color: fontColor }} id={style.more}>. . .</p>
-            </Link>
+            <div id={style.more}>
+                <Link
+                    className={style.link}
+                    to={{
+                        pathname: linkToMore,
+                    }}>
+
+                    <p style={{ color: fontColor }} >. . .</p>
+                </Link>
+            </div>
         </div>
     );
 }
