@@ -3,7 +3,7 @@ import Track from "../Track/Track";
 import style from './DisplayGroup.module.css'
 import { Link } from 'react-router-dom';
 
-export default function DisplayGroup({ myData, number, title, fontColor, linkToMore }) {
+export default function DisplayGroup({ myData, title, fontColor, linkToMore }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function DisplayGroup({ myData, number, title, fontColor, linkToM
         <div className={style.main}>
             <h2 style={{ color: fontColor }}>{title}</h2>
             <hr style={{ color: fontColor }}></hr>
-            {myData.slice(0, number).map(element => {
+            {myData.map(element => {
                 return (
                     <div>
                         <div key={element.id} className={style.infoBlock}>

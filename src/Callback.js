@@ -50,11 +50,6 @@ export default function Callback() {
         sessionStorage.setItem("accessToken", data.access_token);
         sessionStorage.setItem("refreshToken", data.refresh_token);
         sessionStorage.setItem("tokenType", data.token_type);
-        let now = Date.now();
-        let expire = now + data.expires_in;
-        console.log("Expire:" + expire)
-        sessionStorage.setItem("expire", expire);
-
         fetchUserInfos();
     }
 
@@ -69,41 +64,10 @@ export default function Callback() {
 
         //navigate back to home
         window.location.href = "http://localhost:3000";
-
-    }
-
-    //get new accessToken with the refresh Token
-    function requestDataByCode() {
-        let data = {
-            refresh_token: sessionStorage.getItem("refreshToken"),
-            grant_type: 'refresh_token',
-        };
-        let client_credentials = CLIENT_ID + ':' + CLIENT_SECRET;
-        let headers = {
-            'Authorization': 'Basic ' + btoa(client_credentials),
-            'Content-Type': 'application/x-www-form-urlencoded',
-        };
-        axios.post(AUTH_ENDPOINT + "/api/token", querystring.stringify(data), { headers })
-            .then(response => {
-                console.log(response.data);
-                sessionStorage.setItem("accessToken", response.data.access_token);
-                if (response.data.refresh_token) {
-                    sessionStorage.setItem("refreshToken", response.data.refresh_token);
-                }
-                sessionStorage.setItem("tokenType", response.data.token_type);
-                let now = Date.now();
-                let expire = now + response.data.expires_in;
-                console.log("Expire:" + expire)
-                sessionStorage.setItem("expire", expire);
-            }).catch(err => {
-                console.log("Error!");
-                console.log(err.response);
-            });
-
     }
 
     return (
-        <h1 style={{textAlign: 'center'}}>
+        <h1 style={{ textAlign: 'center' }}>
             Pending...
         </h1>
     );

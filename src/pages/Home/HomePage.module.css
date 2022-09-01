@@ -30,3 +30,8 @@
     margin-right: auto;
     border: solid 2px black;
 }
+
+#setValue {
+    float: right;
+    margin-right: 2%;
+}
