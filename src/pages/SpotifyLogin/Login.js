@@ -11,14 +11,9 @@ export default function SpotifyLoginPage() {
     function loggedIn() {
         var state = generateRandomString(16);
         sessionStorage.setItem("state", state);
-        //check if user is signed in
         let authEnpoint = AUTH_ENDPOINT + "/authorize";
-        if (sessionStorage.getItem('accessToken') === "") {
-            const loginUrl = `${authEnpoint}?client_id=${CLIENT_ID}&show_dialog=${true}&redirect_uri=${REDIRECT_URI_ENCODED}&scope=${scopes}&response_type=${RESPONSE_TYPE}&state=${sessionStorage.getItem("state")}`;
-            return loginUrl
-        } else {
-            return <p>Your are already logged in</p>
-        }
+        const loginUrl = `${authEnpoint}?client_id=${CLIENT_ID}&show_dialog=${true}&redirect_uri=${REDIRECT_URI_ENCODED}&scope=${scopes}&response_type=${RESPONSE_TYPE}&state=${sessionStorage.getItem("state")}`;
+        return loginUrl
     }
 
     return (

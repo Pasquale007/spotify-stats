@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
-import HelperFunctions from "../../HelperFunctions";
+import { useState } from "react";
 import style from './DetailedTracks.module.css'
 
 import spotify_icon from '../../assets/Spotify_Icon_RGB_Green.png'
 
 export default function DetailedTracks({ data }) {
-    const [tracks, setTracks] = useState([]);
-
-    useEffect(() => {
-        console.log(data);
-        setTracks(data);
-        HelperFunctions.getTrackInfoHref(data[0]);
-    }, [])
-    useEffect(() => {
-        console.log(tracks);
-    }, [tracks])
+    const [track, setTrack] = useState(data);
 
     function getArtists(artists) {
         let result = "";
@@ -24,25 +14,38 @@ export default function DetailedTracks({ data }) {
         return result.slice(0, result.length - 2);
     }
 
+    function getGenre(genres) {
+        if (!genres || genres.length === 0) {
+            return "---";
+        }
+        let result = "";
+        for (let i = 0; i < genres.length; i++) {
+            let genre = genres[i];
+            if (result.includes(", " + genre + ",")) {
+                continue;
+            }
+            result += genre + ", ";
+        }
+
+        return result.slice(0, result.length - 2);
+    }
+
     return (
         <div>
-            {data.map(track => {
-                return (
-                    <div>
-                        <div key={track.id} className={style.infoBlock}>
-                            <img src={track.album.images[1].url} />
-                            <div className={style.detailedView}>
-                                <img src={spotify_icon} width="100px" id={style.thumbnail}/>
-                                <hr />
-                                <p> Name: {track.name}</p>
-                                <p> Album: {track.album.name}</p>
-                                <p>Von:</p>
-                                <p> {getArtists(track.album.artists)}</p>
-                            </div>
-                        </div>
+            <div>
+                <div className={style.infoBlock}>
+                    <img src={track.album.images[1].url} />
+                    <div className={style.detailedView}>
+                        <img src={spotify_icon} width="100px" id={style.thumbnail} />
+                        <hr />
+                        <p> Name: {track.name}</p>
+                        <p> Album: {track.album.name}</p>
+                        <p>Von:</p>
+                        <p> {getArtists(track.album.artists)}</p>
+                        <p> Genres: {getGenre(track.genres)}</p>
                     </div>
-                );
-            })}
+                </div>
+            </div>
         </div >
     );
 }

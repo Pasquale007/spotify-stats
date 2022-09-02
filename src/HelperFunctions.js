@@ -7,7 +7,6 @@ axios.interceptors.response.use((response) => {
     return response;
 },
     function (error) {
-        console.log("Auth expires");
         const originalRequest = error.config;
         if (!(error.response.status === 401 && !originalRequest._retry)) {
             return;
@@ -50,7 +49,6 @@ export default class HelperFunctions {
             time_range: range,
         }
         let promise = await axios.get(endpoint + "/me/top/tracks?" + querystring.stringify(data), {
-            limit: limit,
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -100,5 +98,18 @@ export default class HelperFunctions {
             return promise.data.items;
         }
         return [];
+    }
+
+    static async getArtistsGenres(track) {
+        let genres = [];
+        for (let i = 0; i < track.artists.length; i++) {
+            let promise = await axios.get(track.artists[i].href, {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+                }
+            })
+            genres = genres.concat(promise.data.genres);
+        }
+        return genres;
     }
 }

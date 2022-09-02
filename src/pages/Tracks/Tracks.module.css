@@ -4,3 +4,28 @@
     justify-content: center;
     text-align: center;
 }
+
+
+#filterBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#setTime label {
+    display: flex;
+    flex-direction: column;
+}
+
+#setTime select {
+    padding: 2%;
+}
+
+#setValue label {
+    display: flex;
+    flex-direction: column;
+}
+
+#setValue input {
+    text-align: center;
+}

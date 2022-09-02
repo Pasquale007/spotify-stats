@@ -31,7 +31,32 @@
     border: solid 2px black;
 }
 
-#setValue {
-    float: right;
-    margin-right: 2%;
+#filterBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#setTime label {
+    display: flex;
+    flex-direction: column;
+}
+
+#setTime select {
+    padding: 2%;
+}
+
+#setValue label {
+    display: flex;
+    flex-direction: column;
+}
+
+#setValue input {
+    text-align: center;
+}
+
+h1,
+p,
+label {
+    color: whitesmoke;
 }

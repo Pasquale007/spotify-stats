@@ -5,7 +5,7 @@ import style from './Layout.module.css'
 function Layout({ children }) {
 
     return (
-        <div>
+        <div className={style.body}>
             <div className={style.root}>
                 <Navigation />
                 <main className={style.main}>{children}</main>

@@ -1,8 +1,10 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { _HomepageName } from '../../_defaultValues';
+import style from './Navigation.module.css'
+
+import logo from '../../assets/logo/logo.png';
 
 export default function Navigation() {
 
@@ -24,21 +26,27 @@ export default function Navigation() {
     }
 
     return (
-        <Navbar bg="primary" expand="lg" sticky="top">
-            <Container>
-                <Navbar.Brand href="#home">{_HomepageName}</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-                <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        {isloggedIn()}
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Container>
+        <Navbar bg="primary" expand="lg" sticky="top" id={style.root}>
+            <Navbar.Brand href="/">
+                <img
+                    alt="Logo"
+                    src={logo}
+                    width="50"
+                    height="50"
+                />{' '}
+                {_HomepageName}
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="/">Home</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+            <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
+                    {isloggedIn()}
+                </Navbar.Text>
+            </Navbar.Collapse>
         </Navbar>
     );
 }

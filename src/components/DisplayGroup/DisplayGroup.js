@@ -16,8 +16,8 @@ export default function DisplayGroup({ myData, title, fontColor, linkToMore }) {
             <hr style={{ color: fontColor }}></hr>
             {myData.map(element => {
                 return (
-                    <div>
-                        <div key={element.id} className={style.infoBlock}>
+                    <div key={element.id}>
+                        <div className={style.infoBlock}>
                             <Track myTrack={element} fontColor={fontColor} />
                         </div>
                         <hr style={{ color: fontColor }}></hr>
