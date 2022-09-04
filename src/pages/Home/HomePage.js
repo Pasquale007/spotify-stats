@@ -5,6 +5,7 @@ import HelperFunctions from '../../HelperFunctions.js';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
+
     const [topTracks, setTopTracks] = useState([]);
     const [topArtists, setTopArtists] = useState([]);
     const [visibleData, setVisibleData] = useState(5);

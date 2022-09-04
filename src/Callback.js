@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { endpoint, REDIRECT_URI, AUTH_ENDPOINT, CLIENT_ID, CLIENT_SECRET } from './_defaultValues'
+import { endpoint, REDIRECT_URI, AUTH_ENDPOINT, CLIENT_ID, CLIENT_SECRET, me } from './_defaultValues'
 
 export default function Callback() {
     const querystring = require('querystring');
@@ -60,10 +60,9 @@ export default function Callback() {
             },
         })
         sessionStorage.setItem('user', JSON.stringify(data));
-        console.log(sessionStorage.getItem('user'));
 
         //navigate back to home
-        window.location.href = "http://localhost:3000";
+        window.location.href = me;
     }
 
     return (

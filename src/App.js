@@ -8,6 +8,7 @@ import Logout from "./pages/SpotifyLogout/Logout";
 import HomePage from "./pages/Home/HomePage";
 import Callback from "./Callback";
 import Tracks from "./pages/Tracks/Tracks";
+import DetailedView from "./pages/DetailedView/DetailedView";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/callback" element={<Callback />} />
           <Route path="/tracks" element={<Tracks />} />
+          <Route path="/details/:id" element={<DetailedView />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </Layout>
