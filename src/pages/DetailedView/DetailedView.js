@@ -19,7 +19,6 @@ export default function DetailedView() {
 
     useEffect(() => {
         console.log(track)
-
     }, [track]);
 
     function getAvailableCountries() {
@@ -48,28 +47,52 @@ export default function DetailedView() {
 
     return (
         <div className={style.main}>
+            <svg width="0" height="0">
+                <linearGradient id="gradient" x1="0%" x2="100%">
+                    <stop stopColor="var(--primary-color)" offset="0%" />
+                    <stop stopColor="transparent" offset="100%" />
+                </linearGradient>
+            </svg>
             <h1>"{track?.name}" from album: "{track?.album?.name}"</h1>
             <img src={track?.album?.images[0]?.url} />
             <hr></hr>
             <Rating
                 fractions={10}
                 initialRating={rating}
-                emptySymbol={<IoMusicalNotesOutline size="70" />}
-                fullSymbol={<IoMusicalNotes size="70" />}
+                emptySymbol={<IoMusicalNotesOutline size="70" style={{ stroke: "var(--primary-color)" }} />}
+                fullSymbol={<IoMusicalNotes size="70" style={{ fill: "var(--primary-color)" }} />}
                 readonly
             />
-            <h2>Available Countries: {getAvailableCountries()}</h2>
-            <h2>Artists:</h2>
-            <div className={style.artists}>
-                {track?.artists?.map(artist => {
-                    return (
-                        <h3 key={artist.id}>- {artist.name}</h3>
-                    );
-                })}
-            </div>
-            <h2>Release Date: {track?.album?.release_date}</h2>
-            <h2>Type: {track?.album?.album_type}: {track?.album?.total_tracks}</h2>
-            <h2>{<AiFillClockCircle />}: {getDuration()}</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h2>Available Countries:</h2></td>
+                        <td><h2>{getAvailableCountries()}</h2> </td>
+                    </tr>
+                    <tr>
+                        <td><h2>Artists:</h2></td>
+                        <td>{track?.artists?.map(artist => {
+                            return (
+                                <div className={style.artists} key={artist.id}>
+                                    <h3 >- {artist.name}</h3>
+                                </div>
+                            );
+                        })}</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Release Date:</h2></td>
+                        <td><h2>{track?.album?.release_date}</h2> </td>
+                    </tr>
+                    <tr>
+                        <td><h2>Type:</h2></td>
+                        <td><h2>{track?.album?.album_type} /Nr.: {track?.album?.total_tracks}</h2> </td>
+                    </tr>
+                    <tr>
+                        <td><h2>{<AiFillClockCircle />}:</h2></td>
+                        <td><h2>{getDuration()}</h2> </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 id={style.openInSpotifyLink} onClick={openInNewTab}>Open in Spotify</h2>
         </div>
     );

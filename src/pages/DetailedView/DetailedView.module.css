@@ -11,5 +11,5 @@
 
 #openInSpotifyLink:hover {
     cursor: pointer;
-    color: lightseagreen;
+    color: var(--primary-color);
 }
