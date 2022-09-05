@@ -74,6 +74,76 @@ export default class HelperFunctions {
         }
         return [];
     }
+
+    /*TODO: Make it work*/
+    static async fetchRecommendations(limit = 50) {
+        //artists
+        let topArtists = await HelperFunctions.fetchTopArtists(2);
+        let artists = "";
+        for (let i = 0; i < topArtists.length; i++) {
+            artists += topArtists[i].id + ",";
+        }
+        artists = artists.substring(0, artists.length - 1);
+
+        //tracks
+        let topTracks = await HelperFunctions.fetchTopTracks(2);
+        let tracks = "";
+        for (let i = 0; i < topTracks.length; i++) {
+            tracks += topTracks[i].id + ",";
+        }
+        tracks = tracks.substring(0, tracks.length - 1);
+
+        //genres
+        for (let i = 0; i < topTracks.length; i++) {
+            let result = await HelperFunctions.getArtistsGenres(topTracks[i]);
+            topTracks[i].genres = result;
+        }
+        let list = [];
+        for (let i = 0; i < topTracks.length; i++) {
+            for (let j = 0; j < topTracks[i].genres.length; j++) {
+                let genre = topTracks[i].genres[j];
+                if (list.find(e => e.name === genre)) {
+                    for (let index in list) {
+                        if (list[index].name === genre) {
+                            list[index].number += 1;
+                        }
+                    }
+                } else {
+                    let element = {
+                        name: genre,
+                        number: 1
+                    }
+                    list.push(element);
+                }
+            }
+        }
+        let genres = "";
+        for (let i = 0; i < list.length; i++) {
+            genres += list[i].name + ",";
+        }
+        genres = genres.substring(0, genres.length - 1);
+
+        console.log(artists);
+        console.log(genres.substring(0, genres.indexOf(",")));
+        console.log(tracks);
+
+        let data = {
+            seed_artists: artists,
+            seed_genres: genres,
+            seed_tracks: ",",
+            limit: limit,
+        }
+        let promise = await axios.get(endpoint + "/recommendations?" + querystring.stringify(data), {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        })
+        if (promise) {
+            return promise.data.tracks;
+        }
+        return [];
+    }
+
     static async fetchFollowedArtists(limit = 50) {
         let data = {
             type: 'artist',
@@ -129,6 +199,7 @@ export default class HelperFunctions {
         }
         return [];
     }
+
 
     static async getArtistsGenres(track) {
         let genres = [];

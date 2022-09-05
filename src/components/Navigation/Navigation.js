@@ -9,7 +9,11 @@ import logo from '../../assets/logo/logo.png';
 export default function Navigation() {
 
     function getName() {
-        return "Signed in as: " + JSON.parse(sessionStorage.getItem('user')).display_name
+        return <span>
+            <img src={JSON.parse(sessionStorage.getItem('user')).images[0].url}
+                style={{ heigth: "40px", width: "40px", borderRadius: "60px" }} />
+            <b>{JSON.parse(sessionStorage.getItem('user')).display_name}</b>
+        </span>
     };
 
     function isloggedIn() {

@@ -4,6 +4,7 @@ import HelperFunctions from '../../HelperFunctions.js';
 
 import { useEffect, useState } from 'react';
 import Filter from '../../components/Filter/Filter';
+import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 
 export default function HomePage() {
 
@@ -11,6 +12,7 @@ export default function HomePage() {
     const [topArtists, setTopArtists] = useState([]);
     const [visibleData, setVisibleData] = useState(5);
     const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
+    const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
         async function fetchTopTracks() {
@@ -23,8 +25,14 @@ export default function HomePage() {
             setTopArtists(topArtists);
         }
 
+        async function recommendations() {
+            let recommendations = await HelperFunctions.fetchRecommendations(visibleData, timeRange);
+            console.log(recommendations);
+            setRecommendations(recommendations);
+        }
         fetchTopTracks();
         fetchTopArtists();
+        recommendations();
     }, [visibleData, timeRange])
 
     return (
@@ -34,6 +42,14 @@ export default function HomePage() {
             <div className={style.main}>
                 <DisplayGroup className={style.displayGroup} myData={topTracks} title={"Your Top Tracks"} fontColor="white" linkToMore="/tracks" />
                 <DisplayGroup className={style.displayGroup} myData={topArtists} title={"Your Top Künstler"} fontColor="white" linkToMore="/artists" />
+            </div>
+            <h1>Recommendations</h1>
+            <div className={style.recommendations}>
+                {recommendations?.map((track) => {
+                    return (
+                        <DetailedTracks data={track} />
+                    );
+                })}
             </div>
         </div >
     );

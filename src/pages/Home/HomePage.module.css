@@ -18,6 +18,12 @@ label {
     color: whitesmoke;
 }
 
+.recommendations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 
 @media screen and (max-width: 1000px) {
 
