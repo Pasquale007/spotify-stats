@@ -13,27 +13,27 @@ export default function HomePage() {
     const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
 
     useEffect(() => {
+        async function fetchTopTracks() {
+            let topTracks = await HelperFunctions.fetchTopTracks(visibleData, timeRange);
+            setTopTracks(topTracks);
+        }
+
+        async function fetchTopArtists() {
+            let topArtists = await HelperFunctions.fetchTopArtists(visibleData, timeRange);
+            setTopArtists(topArtists);
+        }
+
         fetchTopTracks();
         fetchTopArtists();
     }, [visibleData, timeRange])
-
-    async function fetchTopTracks() {
-        let topTracks = await HelperFunctions.fetchTopTracks(visibleData, timeRange);
-        setTopTracks(topTracks);
-    }
-
-    async function fetchTopArtists() {
-        let topArtists = await HelperFunctions.fetchTopArtists(visibleData, timeRange);
-        setTopArtists(topArtists);
-    }
 
     return (
         <div className={style.root}>
             <h1>Home</h1>
             <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
             <div className={style.main}>
-                <DisplayGroup myData={topTracks} title={"Deine Top Tracks"} fontColor="white" linkToMore="/tracks" />
-                <DisplayGroup myData={topArtists} title={"Deine Top Künstler"} fontColor="white" linkToMore="/artists" />
+                <DisplayGroup className={style.displayGroup} myData={topTracks} title={"Your Top Tracks"} fontColor="white" linkToMore="/tracks" />
+                <DisplayGroup className={style.displayGroup} myData={topArtists} title={"Your Top Künstler"} fontColor="white" linkToMore="/artists" />
             </div>
         </div >
     );

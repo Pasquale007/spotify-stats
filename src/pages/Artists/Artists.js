@@ -27,7 +27,6 @@ export default function Artists() {
             <div className={style.content}>
                 {artists.map(artist => {
                     return (
-
                         <DetailedArtists key={artist.id} data={artist} />
                     )
                 })}

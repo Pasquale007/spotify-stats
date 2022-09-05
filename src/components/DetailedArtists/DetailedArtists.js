@@ -28,6 +28,12 @@ export default function DetailedArtists({ data }) {
 
         return result.slice(0, result.length - 2);
     }
+    function getFollowers() {
+        let follower = artist?.followers?.total;
+        follower = follower.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return follower;
+
+    }
 
     function click() {
         window.open(artist?.external_urls?.spotify).focus();
@@ -56,7 +62,7 @@ export default function DetailedArtists({ data }) {
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
                     <hr />
                     <p> Name: {artist?.name}</p>
-                    <p> Followers: {artist?.followers?.total}</p>
+                    <p> Followers: {getFollowers()}</p>
                     <p> Genres: {getGenre(artist?.genres)}</p>
                     <Rating
                         className={style.rating}

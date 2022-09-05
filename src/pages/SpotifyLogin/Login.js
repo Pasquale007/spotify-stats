@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image'
 import SpotifyLogo from '../../assets/Spotify_Logo_RGB_Green.png'
 
 export default function SpotifyLoginPage() {
-    const scopes = 'user-top-read user-read-private user-read-currently-playing user-read-recently-played user-read-playback-state user-modify-playback-state';
+    const scopes = 'playlist-read-collaborative playlist-modify-private playlist-read-private user-top-read user-read-private user-read-currently-playing user-read-recently-played user-read-playback-state user-modify-playback-state user-follow-read';
 
     function loggedIn() {
         var state = generateRandomString(16);

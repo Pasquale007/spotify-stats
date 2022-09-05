@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    margin: 2%;
+}
+
+.main:hover {
+    cursor: pointer;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

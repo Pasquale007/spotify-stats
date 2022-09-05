@@ -18,9 +18,14 @@ export default function Navigation() {
             return <Nav.Link href="/login">Login</Nav.Link>;
         } else {
             return <NavDropdown title={getName()} >
+                <NavDropdown.Item href="#playlists">
+                    <Nav.Link href="/playlists">Your Playlists</Nav.Link>
+                </NavDropdown.Item>
+                <hr></hr>
                 <NavDropdown.Item href="#logout">
                     <Nav.Link href="/logout">Logout</Nav.Link>
                 </NavDropdown.Item>
+
             </NavDropdown >
         }
     }
@@ -42,6 +47,7 @@ export default function Navigation() {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/tracks">Tracks</Nav.Link>
                     <Nav.Link href="/artists">Artists</Nav.Link>
+                    <Nav.Link href="/follower">Your Artists</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">

@@ -17,3 +17,13 @@
     transform: translate(5px, -5px);
     transition-duration: 2s;
 }
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .main {
+        width: 80%;
+        margin-bottom: 4%;
+    }
+}

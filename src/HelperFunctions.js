@@ -74,6 +74,36 @@ export default class HelperFunctions {
         }
         return [];
     }
+    static async fetchFollowedArtists(limit) {
+        let data = {
+            type: 'artist',
+            limit: limit,
+        }
+        let promise = await axios.get(endpoint + "/me/following?" + querystring.stringify(data), {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        });
+        if (promise) {
+            return promise.data.artists.items;
+        }
+        return [];
+    }
+
+    static async fetchUserPlaylists(limit) {
+        let data = {
+            limit: limit,
+        }
+        let promise = await axios.get(endpoint + "/me/playlists?" + querystring.stringify(data), {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        });
+        if (promise) {
+            return promise.data.items;
+        }
+        return [];
+    }
 
 
     static async getTrackInfo(track) {

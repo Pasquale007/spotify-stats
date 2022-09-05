@@ -44,7 +44,7 @@ export default function DetailedTracks({ data }) {
                 <hr />
                 <p> Name: {track.name}</p>
                 <p> Album: {track.album.name}</p>
-                <p>Von:</p>
+                <p>Artist:</p>
                 <p> {getArtists(track.album.artists)}</p>
                 <p> Genres: {getGenre(track.genres)}</p>
             </div>

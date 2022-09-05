@@ -10,6 +10,8 @@ import Callback from "./Callback";
 import Tracks from "./pages/Tracks/Tracks";
 import DetailedView from "./pages/DetailedView/DetailedView";
 import Artists from "./pages/Artists/Artists";
+import FollowedArtists from "./pages/FollowedArtists/FollowedArtists";
+import Playlists from "./pages/Playlists/Playlists";
 
 export default function App() {
   return (
@@ -20,7 +22,9 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/callback" element={<Callback />} />
           <Route path="/tracks" element={<Tracks />} />
-          <Route path="/artists" element={<Artists/>} />
+          <Route path="/artists" element={<Artists />} />
+          <Route path="/follower" element={<FollowedArtists />} />
+          <Route path="/playlists" element={<Playlists />} />
           <Route path="/details/:id" element={<DetailedView />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
