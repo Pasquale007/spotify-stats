@@ -8,7 +8,7 @@ export default function FollowedArtists() {
 
     useEffect(() => {
         async function fetchFollower() {
-            let followedArtists = await HelperFunctions.fetchFollowedArtists(5);
+            let followedArtists = await HelperFunctions.fetchFollowedArtists();
             setArtists(followedArtists);
         }
         fetchFollower();

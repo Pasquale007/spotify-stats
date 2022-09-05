@@ -74,7 +74,7 @@ export default class HelperFunctions {
         }
         return [];
     }
-    static async fetchFollowedArtists(limit) {
+    static async fetchFollowedArtists(limit = 50) {
         let data = {
             type: 'artist',
             limit: limit,
@@ -90,7 +90,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchUserPlaylists(limit) {
+    static async fetchUserPlaylists(limit = 50) {
         let data = {
             limit: limit,
         }

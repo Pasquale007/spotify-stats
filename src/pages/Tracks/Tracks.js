@@ -58,13 +58,13 @@ export default function Tracks() {
         <div className={style.main}>
             <h1>Tracks</h1>
             <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
+            <h3>Genres:</h3>
             <div className={style.genres}>
-                <h3>Genres:</h3>
                 {genres.map(genre => {
                     return (
-                        <>
+                        <div>
                             <p>{genre.name}: {genre.number}</p>
-                        </>
+                        </div>
                     );
                 }
                 )}

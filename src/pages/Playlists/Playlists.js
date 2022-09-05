@@ -9,7 +9,7 @@ export default function Playlists() {
 
     useEffect(() => {
         async function fetchUserPlaylists() {
-            let data = await HelperFunctions.fetchUserPlaylists(5);
+            let data = await HelperFunctions.fetchUserPlaylists();
             setPlaylists(data);
         }
 
