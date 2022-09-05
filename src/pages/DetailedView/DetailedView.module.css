@@ -12,4 +12,9 @@
 #openInSpotifyLink:hover {
     cursor: pointer;
     color: var(--primary-color);
+    text-decoration: underline;
+}
+
+#openInSpotifyLink {
+    text-decoration: underline;
 }

@@ -59,7 +59,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchTopArtist(limit, range = HelperFunctions.time_ranges.medium) {
+    static async fetchTopArtists(limit, range = HelperFunctions.time_ranges.medium) {
         let data = {
             limit: limit,
             time_range: range,

@@ -38,7 +38,7 @@ export default function DetailedView() {
     function getDuration() {
         let durationInMs = track.duration_ms;
         let durationInM = durationInMs / 1000 / 60;
-        return (Math.round(durationInM * 100) / 100) + "min";
+        return (Math.round(durationInM * 100) / 100) + " min";
     }
 
     function openInNewTab() {

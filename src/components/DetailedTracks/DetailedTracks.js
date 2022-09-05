@@ -37,7 +37,7 @@ export default function DetailedTracks({ data }) {
     }
 
     return (
-        <div className={style.infoBlock} onClick={click}>
+        <div className={style.infoBlock} onClick={click} >
             <img src={track.album.images[1].url} />
             <div className={style.detailedView}>
                 <img src={spotify_icon} width="100px" id={style.thumbnail} />
@@ -48,6 +48,6 @@ export default function DetailedTracks({ data }) {
                 <p> {getArtists(track.album.artists)}</p>
                 <p> Genres: {getGenre(track.genres)}</p>
             </div>
-        </div>
+        </div >
     );
 }

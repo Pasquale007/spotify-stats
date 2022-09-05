@@ -36,19 +36,7 @@
     border-radius: 10px;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-around;
-}
-
-.genres p,
-h3 {
-    color: whitesmoke;
-}
-
 @media screen and (max-width: 1000px) {
-    .flex {
-        flex-direction: column;
-    }
+
 
 }
