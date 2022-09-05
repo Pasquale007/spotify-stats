@@ -58,25 +58,24 @@ export default function Tracks() {
         <div className={style.main}>
             <h1>Tracks</h1>
             <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
+            <div className={style.genres}>
+                <h3>Genres:</h3>
+                {genres.map(genre => {
+                    return (
+                        <>
+                            <p>{genre.name}: {genre.number}</p>
+                        </>
+                    );
+                }
+                )}
+            </div>
+
             <div className={style.flex}>
-                <div className={style.content}>
-                    {tracks.map(track => {
-                        return (
-                            <DetailedTracks key={track.id} data={track} />
-                        )
-                    })}
-                </div>
-                <div className={style.genres}>
-                    <h3>Genres:</h3>
-                    {genres.map(genre => {
-                        return (
-                            <>
-                                <p>{genre.name}: {genre.number}</p>
-                            </>
-                        );
-                    }
-                    )}
-                </div>
+                {tracks.map(track => {
+                    return (
+                        <DetailedTracks key={track.id} data={track} />
+                    )
+                })}
             </div>
         </div>
     );

@@ -5,33 +5,8 @@
     text-align: center;
 }
 
-#filterBox {
+.content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 2%;
-}
-
-#setTime label {
-    display: flex;
-    flex-direction: column;
-}
-
-#setTime select {
-    padding: 2%;
-    background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 50%, var(--signal-color) 100%);
-    border: none;
-    border-radius: 10px;
-}
-
-#setValue label {
-    display: flex;
-    flex-direction: column;
-}
-
-#setValue input {
-    text-align: center;
-    background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 50%, var(--signal-color) 100%);
-    border: none;
-    border-radius: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }

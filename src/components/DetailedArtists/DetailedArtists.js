@@ -49,7 +49,7 @@ export default function DetailedArtists({ data }) {
                 </Tooltip>
             }>
 
-            <div className={style.infoBlock} onClick={click}>
+            <div className={style.main} onClick={click}>
 
                 <svg width="0" height="0">
                     <linearGradient id="gradient" x1="0%" x2="100%">
@@ -58,7 +58,7 @@ export default function DetailedArtists({ data }) {
                     </linearGradient>
                 </svg>
                 <img src={artist?.images[1]?.url} />
-                <div className={style.detailedView}>
+                <div className={style.data}>
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
                     <hr />
                     <p> Name: {artist?.name}</p>

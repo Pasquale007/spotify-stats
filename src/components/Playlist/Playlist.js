@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import style from './Playlist.module.css'
+import spotify_icon from '../../assets/Spotify_Icon_RGB_Green.png'
 
 export default function Playlist({ data }) {
 
@@ -20,16 +21,19 @@ export default function Playlist({ data }) {
     }
 
     function click() {
-        console.log("do sth");
+        alert("Sorry. This function is currently not available");
     }
+
     return (
-        <div className={style.main} onClick={click}>
+        <div className={style.main} onClick={click} alt="Spotify Logo">
             <img src={getImage()} width={"300px"} height={"300px"} />
             <div className={style.data}>
-                <h3>{playlist?.name}</h3>
-                <h3>Description:{playlist?.description}</h3>
-                <h3>Owner: {playlist?.owner?.display_name}</h3>
-                <h3>Total of {playlist?.tracks?.total} tracks</h3>
+                <img src={spotify_icon} width={"100px"} />
+                <hr></hr>
+                <p>{playlist?.name}</p>
+                <p>Owner: {playlist?.owner?.display_name}</p>
+                <p>Total of {playlist?.tracks?.total} tracks</p>
+                <p>Description:{playlist?.description}</p>
             </div>
         </div>
     );

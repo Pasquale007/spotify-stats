@@ -1,14 +1,38 @@
+.data {
+    text-align: center;
+    width: 200px;
+}
+
+.data p {
+    color: whitesmoke;
+}
+
 .main {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #191414;
+    padding: 3%;
+    min-width: 500px;
     margin: 2%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px 10px #232222;
+}
+
+.main img {
+    margin-right: 1%;
 }
 
 .main:hover {
     cursor: pointer;
 }
 
-.data {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+@media screen and (max-width: 1000px) {
+    .main {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0%;
+    }
 }
