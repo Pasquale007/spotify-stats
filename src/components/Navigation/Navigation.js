@@ -25,6 +25,9 @@ export default function Navigation() {
                 <NavDropdown.Item href="#playlists">
                     <Nav.Link href="/playlists">Your Playlists</Nav.Link>
                 </NavDropdown.Item>
+                <NavDropdown.Item href="#contact">
+                    <Nav.Link href="/contact">Contact us</Nav.Link>
+                </NavDropdown.Item>
                 <hr></hr>
                 <NavDropdown.Item href="#logout">
                     <Nav.Link href="/logout">Logout</Nav.Link>

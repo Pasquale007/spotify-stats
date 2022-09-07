@@ -13,5 +13,13 @@ code {
 }
 
 #root {
-  background-color: #191414;
+  background-image: url("./assets/wave-haikei.svg");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
 }

@@ -31,6 +31,10 @@ export default function DetailedTracks({ data }) {
         return result.slice(0, result.length - 2);
     }
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
     function click() {
         console.log(track.id);
         window.location.href = me + "/details/" + track.id;
@@ -43,7 +47,7 @@ export default function DetailedTracks({ data }) {
                 <img src={spotify_icon} width="100px" id={style.thumbnail} />
                 <hr />
                 <p> Name: {track.name}</p>
-                <p> Album: {track.album.name}</p>
+                <p> {capitalizeFirstLetter(track.album.album_type)}: {track.album.name}</p>
                 <p>Artist:</p>
                 <p> {getArtists(track.album.artists)}</p>
                 <p> Genres: {getGenre(track.genres)}</p>

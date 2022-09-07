@@ -62,7 +62,7 @@ export default function Tracks() {
             <div className={style.genres}>
                 {genres.map(genre => {
                     return (
-                        <div>
+                        <div key={genre.name}>
                             <p>{genre.name}: {genre.number}</p>
                         </div>
                     );

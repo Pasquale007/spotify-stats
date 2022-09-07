@@ -21,3 +21,8 @@ export const REDIRECT_URI = me + "/callback";
 export const AUTH_ENDPOINT = "https://accounts.spotify.com";
 export const CLIENT_ID = "6c0a0d7ae3424c0ab2dd02b5a10a0fa0";
 export const CLIENT_SECRET = "5558a896d7514ce58c7524b28a93038e";
+
+//Email versand
+export const myEmail = "Pascal0707@gmx.de"
+export const targetEmail = "Pascal0707@gmx.de"
+export const myName = "Pascal Thurow"

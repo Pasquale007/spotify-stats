@@ -43,11 +43,11 @@ export default function HomePage() {
                 <DisplayGroup className={style.displayGroup} myData={topTracks} title={"Your Top Tracks"} fontColor="white" linkToMore="/tracks" />
                 <DisplayGroup className={style.displayGroup} myData={topArtists} title={"Your Top Künstler"} fontColor="white" linkToMore="/artists" />
             </div>
-            <h1>Recommendations</h1>
+            <h1>Our suggestions for you:</h1>
             <div className={style.recommendations}>
                 {recommendations?.map((track) => {
                     return (
-                        <DetailedTracks data={track} />
+                        <DetailedTracks key={track.id} data={track} />
                     );
                 })}
             </div>

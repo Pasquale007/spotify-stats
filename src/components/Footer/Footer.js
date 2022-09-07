@@ -1,6 +1,7 @@
 import style from './Footer.module.css'
 import { _HomepageName, _copyright, _linkFacebook, _linkInstagram, _linkTwitter, _linkWhatsapp } from '../../_defaultValues';
 import { BsFacebook, BsInstagram, BsWhatsapp, BsTwitter } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     const size = 35;
@@ -39,6 +40,7 @@ function Footer() {
                     Deutschland
                 </address>
             </div>
+            <Link to="/contact" className={style.link}>Contact us</Link>
             <hr />
             <p className={style.copyright}>Ⓒ  {_copyright} {_HomepageName}</p>
         </div>

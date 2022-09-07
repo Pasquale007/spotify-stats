@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Track({ myTrack, fontColor }) {
-    const [track, setTrack] = useState([]);
-
-    useEffect(() => {
-        setTrack(myTrack);
-    }, []);
+    const [track, setTrack] = useState(myTrack);
 
     return (
-        <div>
+        <div key={myTrack.id}>
             <p style={{ color: fontColor }}>{track.name}</p>
         </div>
     );

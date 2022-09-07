@@ -123,9 +123,9 @@ export default class HelperFunctions {
         }
         genres = genres.substring(0, genres.length - 1);
 
-        console.log(artists);
-        console.log(genres.substring(0, genres.indexOf(",")));
-        console.log(tracks);
+        //console.log(artists);
+        //console.log(genres.substring(0, genres.indexOf(",")));
+        //console.log(tracks);
 
         let data = {
             seed_artists: artists,
@@ -138,6 +138,11 @@ export default class HelperFunctions {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
+
+        //add genres
+        for (let i = 0; i < promise.data.tracks.length; i++) {
+            promise.data.tracks[i].genres = await this.getArtistsGenres(promise.data.tracks[i]);
+        }
         if (promise) {
             return promise.data.tracks;
         }
