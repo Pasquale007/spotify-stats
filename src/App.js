@@ -13,22 +13,25 @@ import Artists from "./pages/Artists/Artists";
 import FollowedArtists from "./pages/FollowedArtists/FollowedArtists";
 import Playlists from "./pages/Playlists/Playlists";
 import Contact from "./pages/Contact/Contact";
+import RequireAuth from "./RequireAuth";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/callback" element={<Callback />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/callback" element={<Callback />} />
-          <Route path="/tracks" element={<Tracks />} />
-          <Route path="/artists" element={<Artists />} />
-          <Route path="/follower" element={<FollowedArtists />} />
-          <Route path="/playlists" element={<Playlists />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/details/:id" element={<DetailedView />} />
-          <Route path="/" element={<HomePage />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/tracks" element={<Tracks />} />
+            <Route path="/artists" element={<Artists />} />
+            <Route path="/follower" element={<FollowedArtists />} />
+            <Route path="/playlists" element={<Playlists />} />
+            <Route path="/details/:id" element={<DetailedView />} />
+          </Route>
         </Routes>
       </Layout>
     </BrowserRouter >

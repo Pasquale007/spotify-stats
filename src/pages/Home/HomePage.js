@@ -1,47 +1,48 @@
 import style from './HomePage.module.css'
-import DisplayGroup from '../../components/DisplayGroup/DisplayGroup';
 import HelperFunctions from '../../HelperFunctions.js';
-
 import { useEffect, useState } from 'react';
-import Filter from '../../components/Filter/Filter';
 import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
+import Cluster from '../../components/Cluster/Cluster';
 
 export default function HomePage() {
 
-    const [topTracks, setTopTracks] = useState([]);
-    const [topArtists, setTopArtists] = useState([]);
     const [visibleData, setVisibleData] = useState(5);
     const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
     const [recommendations, setRecommendations] = useState([]);
 
+    const offer = ["Check your top Tracks", "Check your top Artists",
+        "Check every of your playlist", "Edit your playlists", "Check your followed artists"];
+
+    const whyUs = ["It's Free", "Easy to use", "Simple design", "Easy connect via your spotify account"];
+
     useEffect(() => {
-        async function fetchTopTracks() {
-            let topTracks = await HelperFunctions.fetchTopTracks(visibleData, timeRange);
-            setTopTracks(topTracks);
-        }
-
-        async function fetchTopArtists() {
-            let topArtists = await HelperFunctions.fetchTopArtists(visibleData, timeRange);
-            setTopArtists(topArtists);
-        }
-
         async function recommendations() {
             let recommendations = await HelperFunctions.fetchRecommendations(visibleData, timeRange);
-            console.log(recommendations);
             setRecommendations(recommendations);
         }
-        fetchTopTracks();
-        fetchTopArtists();
         recommendations();
     }, [visibleData, timeRange])
 
     return (
         <div className={style.root}>
-            <h1>Home</h1>
-            <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
-            <div className={style.main}>
-                <DisplayGroup className={style.displayGroup} myData={topTracks} title={"Your Top Tracks"} fontColor="white" linkToMore="/tracks" />
-                <DisplayGroup className={style.displayGroup} myData={topArtists} title={"Your Top Künstler"} fontColor="white" linkToMore="/artists" />
+            <div className={style.rotatingWords}>
+                <h1>Are you intested in </h1>
+                <div className={style.words}>
+                    <span className={style.rotatingSpan}><h1>understanding</h1></span>
+                    <span className={style.rotatingSpan}><h1>checking</h1></span>
+                    <span className={style.rotatingSpan}><h1>controlling</h1></span>
+                    <span className={style.rotatingSpan}><h1>editing</h1></span>
+                    <span className={style.rotatingSpan}><h1>comparing</h1></span>
+                </div>
+                <h1> your spotify behavior?</h1>
+            </div>
+            <div className={style.offer}>
+                <Cluster data={offer} />
+                <h2>What we offer you?</h2>
+            </div>
+            <div className={style.offer}>
+                <h2>Why should you use us?</h2>
+                <Cluster data={whyUs} />
             </div>
             <h1>Our suggestions for you:</h1>
             <div className={style.recommendations}>

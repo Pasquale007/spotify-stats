@@ -11,8 +11,10 @@
     text-align: center;
 }
 
-
 h1,
+h2,
+h3,
+h4,
 p,
 label {
     color: whitesmoke;
@@ -23,6 +25,89 @@ label {
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.offer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 70%;
+    /*border-radius: 20px;
+    background: rgba(25, 20, 20, 0.32);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);*/
+}
+
+.offer h2 {
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rotatingWords {
+    box-sizing: content-box;
+    height: 50px;
+    padding: 30px 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.words {
+    overflow: hidden;
+}
+
+
+.rotatingSpan {
+    display: block;
+    height: 100%;
+    padding-left: 10px;
+    animation: spin_words 12s infinite;
+}
+
+.rotatingSpan h1 {
+    color: var(--primary-color);
+}
+
+
+@keyframes spin_words {
+    15% {
+        transform: translateY(-112%);
+    }
+
+    25% {
+        transform: translateY(-100%);
+    }
+
+    35% {
+        transform: translateY(-212%);
+    }
+
+    50% {
+        transform: translateY(-200%);
+    }
+
+    60% {
+        transform: translateY(-312%);
+    }
+
+    75% {
+        transform: translateY(-300%);
+    }
+
+    85% {
+        transform: translateY(-412%);
+    }
+
+    100% {
+        transform: translateY(-400%);
+    }
 }
 
 @media screen and (max-width: 1000px) {

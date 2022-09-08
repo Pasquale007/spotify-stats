@@ -11,6 +11,13 @@
     flex-wrap: wrap;
 }
 
+.genres {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 200px;
+}
+
 .genres p,
 h3 {
     color: whitesmoke;

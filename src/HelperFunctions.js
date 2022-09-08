@@ -77,6 +77,9 @@ export default class HelperFunctions {
 
     /*TODO: Make it work*/
     static async fetchRecommendations(limit = 50) {
+        if (!sessionStorage.getItem("accessToken")) {
+            return;
+        }
         //artists
         let topArtists = await HelperFunctions.fetchTopArtists(2);
         let artists = "";
