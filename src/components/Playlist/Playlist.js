@@ -21,7 +21,7 @@ export default function Playlist({ data }) {
     }
 
     function click() {
-        alert("Sorry. This function is currently not available");
+        alert("Sorry, editing is currently not available");
     }
 
     return (

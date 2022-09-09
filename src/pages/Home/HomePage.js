@@ -10,10 +10,11 @@ export default function HomePage() {
     const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
     const [recommendations, setRecommendations] = useState([]);
 
+    const rotatingWords = ["understanding", "checking", "controlling", "editing", "comparing"];
     const offer = ["Check your top Tracks", "Check your top Artists",
         "Check every of your playlist", "Edit your playlists", "Check your followed artists"];
 
-    const whyUs = ["It's Free", "Easy to use", "Simple design", "Easy connect via your spotify account"];
+    const whyUs = ["It's Free", "No configuration necessary", "Easy to use", "Simple design", "Easy connect via your spotify account", "Access all time history from spotify direct"];
 
     useEffect(() => {
         async function recommendations() {
@@ -28,11 +29,11 @@ export default function HomePage() {
             <div className={style.rotatingWords}>
                 <h1>Are you intested in </h1>
                 <div className={style.words}>
-                    <span className={style.rotatingSpan}><h1>understanding</h1></span>
-                    <span className={style.rotatingSpan}><h1>checking</h1></span>
-                    <span className={style.rotatingSpan}><h1>controlling</h1></span>
-                    <span className={style.rotatingSpan}><h1>editing</h1></span>
-                    <span className={style.rotatingSpan}><h1>comparing</h1></span>
+                    {rotatingWords.map(word => {
+                        return (
+                            <span className={style.rotatingSpan}><h1>{word}</h1></span>
+                        );
+                    })}
                 </div>
                 <h1> your spotify behavior?</h1>
             </div>
