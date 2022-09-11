@@ -16,7 +16,7 @@ export const _linkTwitter = "https://google.de";
 //Api endpoint
 export const endpoint = "https://api.spotify.com/v1";
 export const RESPONSE_TYPE = "code";
-export const REDIRECT_URI_ENCODED = encodeURIComponent("http://localhost:3000/callback");
+export const REDIRECT_URI_ENCODED = encodeURIComponent(me + "/callback");
 export const REDIRECT_URI = me + "/callback";
 export const AUTH_ENDPOINT = "https://accounts.spotify.com";
 export const CLIENT_ID = "6c0a0d7ae3424c0ab2dd02b5a10a0fa0";
