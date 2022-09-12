@@ -50,7 +50,7 @@ export default function DetailedArtists({ data }) {
             }>
 
             <div className={style.main} onClick={click}>
-                <img src={artist?.images[1]?.url}  max-width="100%"/>
+                <img src={artist?.images[1]?.url}/>
                 <div className={style.data}>
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
                     <hr />

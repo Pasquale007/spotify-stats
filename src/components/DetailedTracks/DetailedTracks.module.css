@@ -1,12 +1,12 @@
-.detailedView {
+.data {
     width: 250px;
 }
 
-.detailedView p {
+.data p {
     color: whitesmoke;
 }
 
-.infoBlock {
+.main {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,18 +22,21 @@
     -webkit-backdrop-filter: blur(4.6px);
 }
 
-.infoBlock img {
+.main img {
     margin-right: 1%;
 }
 
-.infoBlock:hover {
+.main:hover {
     cursor: pointer;
 }
 
 @media screen and (max-width: 1000px) {
-    .infoBlock {
+    .main {
         flex-direction: column;
         justify-content: center;
         padding: 0%;
+    }
+    .main img {
+        margin-top: 2%;
     }
 }

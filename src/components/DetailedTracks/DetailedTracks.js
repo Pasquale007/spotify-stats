@@ -41,9 +41,9 @@ export default function DetailedTracks({ data }) {
     }
 
     return (
-        <div className={style.infoBlock} onClick={click} >
+        <div className={style.main} onClick={click} >
             <img src={track.album.images[1].url} />
-            <div className={style.detailedView}>
+            <div className={style.data}>
                 <img src={spotify_icon} width="100px" id={style.thumbnail} />
                 <hr />
                 <p> Name: {track.name}</p>
