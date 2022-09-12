@@ -13,7 +13,7 @@ export default function SpotifyLoginPage() {
         sessionStorage.setItem("state", state);
         let authEnpoint = AUTH_ENDPOINT + "/authorize";
         const loginUrl = `${authEnpoint}?client_id=${CLIENT_ID}&show_dialog=${true}&redirect_uri=${REDIRECT_URI_ENCODED}&scope=${scopes}&response_type=${RESPONSE_TYPE}&state=${sessionStorage.getItem("state")}`;
-        return loginUrl
+        return loginUrl;
     }
 
     return (
@@ -35,6 +35,5 @@ export default function SpotifyLoginPage() {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
-
     }
 }
