@@ -121,4 +121,23 @@ label {
     .displayGroup {
         margin-bottom: 400px;
     }
+
+    .rotatingWords {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .words {
+        overflow: hidden;
+        height: 40px;
+    }
+
+    .offer {
+        flex-direction: column;
+    }
+
+    .offer h2 {
+        order: -1;
+    }
+
 }
