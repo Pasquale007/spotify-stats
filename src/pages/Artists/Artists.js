@@ -22,7 +22,7 @@ export default function Artists() {
 
     return (
         <div className={style.main}>
-            <h1>Artists</h1>
+            <h1>Your top {visibleData} artists</h1>
             <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
             <div className={style.content}>
                 {artists.map(artist => {

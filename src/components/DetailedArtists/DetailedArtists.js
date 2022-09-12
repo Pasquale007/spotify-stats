@@ -57,7 +57,7 @@ export default function DetailedArtists({ data }) {
                         <stop stopColor="transparent" offset="100%" />
                     </linearGradient>
                 </svg>
-                <img src={artist?.images[1]?.url} />
+                <img src={artist?.images[1]?.url}  max-width="100%"/>
                 <div className={style.data}>
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
                     <hr />

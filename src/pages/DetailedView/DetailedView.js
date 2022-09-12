@@ -47,14 +47,8 @@ export default function DetailedView() {
 
     return (
         <div className={style.main}>
-            <svg width="0" height="0">
-                <linearGradient id="gradient" x1="0%" x2="100%">
-                    <stop stopColor="var(--primary-color)" offset="0%" />
-                    <stop stopColor="transparent" offset="100%" />
-                </linearGradient>
-            </svg>
             <h1>"{track?.name}" from album: "{track?.album?.name}"</h1>
-            <img src={track?.album?.images[0]?.url} />
+            <img src={track?.album?.images[0]?.url} style={{ maxWidth: "100%" }} />
             <hr></hr>
             <Rating
                 fractions={10}
