@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import style from './DetailedArtists.module.css'
-
 import spotify_icon from '../../assets/Spotify_Icon_RGB_Green.png'
 import Rating from 'react-rating';
-
 import { IoMusicalNotesOutline } from "react-icons/io5";
 import { IoMusicalNotes } from "react-icons/io5";
-
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
@@ -50,7 +47,7 @@ export default function DetailedArtists({ data }) {
             }>
 
             <div className={style.main} onClick={click}>
-                <img src={artist?.images[1]?.url}/>
+                <img src={artist?.images[1]?.url} />
                 <div className={style.data}>
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
                     <hr />

@@ -18,7 +18,7 @@ export default function HomePage() {
 
     useEffect(() => {
         async function recommendations() {
-            let recommendations = await HelperFunctions.fetchRecommendations(visibleData, timeRange);
+            let recommendations = await HelperFunctions.fetchRecommendations(visibleData);
             setRecommendations(recommendations);
         }
         recommendations();
