@@ -56,6 +56,7 @@ export default function Navigation() {
                     <Nav.Link as={Link} to="/tracks">Tracks</Nav.Link>
                     <Nav.Link as={Link} to="/artists">Artists</Nav.Link>
                     <Nav.Link as={Link} to="/follower">Your Artists</Nav.Link>
+                    <Nav.Link as={Link} to="/mix">Your Mix</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">

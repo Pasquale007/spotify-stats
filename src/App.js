@@ -14,6 +14,7 @@ import FollowedArtists from "./pages/FollowedArtists/FollowedArtists";
 import Playlists from "./pages/Playlists/Playlists";
 import Contact from "./pages/Contact/Contact";
 import RequireAuth from "./RequireAuth";
+import Mix from "./pages/mix/Mix";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route element={<RequireAuth />}>
+          <Route path="/mix" element={<Mix />} />
             <Route path="/tracks" element={<Tracks />} />
             <Route path="/artists" element={<Artists />} />
             <Route path="/follower" element={<FollowedArtists />} />
