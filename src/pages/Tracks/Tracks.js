@@ -56,7 +56,7 @@ export default function Tracks() {
 
     return (
         <div className={style.main}>
-            <h1>Tracks</h1>
+            <h1>Your top {visibleData} tracks</h1>
             <Filter startTime={timeRange} setTimeRange={setTimeRange} startItems={visibleData} setItems={setVisibleData} />
             <h3>Genres:</h3>
             <div className={style.genres}>

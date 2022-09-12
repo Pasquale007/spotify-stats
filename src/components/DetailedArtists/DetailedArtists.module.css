@@ -7,6 +7,13 @@
     color: whitesmoke;
 }
 
+.root {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .main {
     display: flex;
     flex-direction: row;
@@ -23,7 +30,7 @@
 }
 
 .main img {
-    margin-right: 1%;
+    margin: 2%;
 }
 
 .main:hover {

@@ -31,7 +31,7 @@ export default function HomePage() {
                 <div className={style.words}>
                     {rotatingWords.map(word => {
                         return (
-                            <span className={style.rotatingSpan}><h1>{word}</h1></span>
+                            <div className={style.rotatingSpan}><h1>{word}</h1></div>
                         );
                     })}
                 </div>

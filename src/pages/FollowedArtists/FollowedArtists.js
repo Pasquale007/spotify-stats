@@ -15,12 +15,17 @@ export default function FollowedArtists() {
     }, []);
 
     return (
-        <div className={style.main}>
-            {artists.map(artist => {
-                return (
-                    <DetailedArtists key={artist.id} data={artist} />
-                )
-            })}
+        <div className={style.root}>
+            <h1>Your followed artists</h1>
+            <div className={style.main}>
+                {artists.map(artist => {
+                    return (
+                        <DetailedArtists key={artist.id} data={artist} />
+                    )
+                })}
+            </div>
+
         </div>
+
     );
 }
