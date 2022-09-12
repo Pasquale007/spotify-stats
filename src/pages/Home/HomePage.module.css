@@ -121,4 +121,13 @@ label {
     .displayGroup {
         margin-bottom: 400px;
     }
+
+    .rotatingWords {
+        display: block;
+    }
+
+    .words {
+        overflow: hidden;
+        height: 40px;
+    }
 }

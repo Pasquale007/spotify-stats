@@ -50,13 +50,6 @@ export default function DetailedArtists({ data }) {
             }>
 
             <div className={style.main} onClick={click}>
-
-                <svg width="0" height="0">
-                    <linearGradient id="gradient" x1="0%" x2="100%">
-                        <stop stopColor="var(--primary-color)" offset="0%" />
-                        <stop stopColor="transparent" offset="100%" />
-                    </linearGradient>
-                </svg>
                 <img src={artist?.images[1]?.url}  max-width="100%"/>
                 <div className={style.data}>
                     <img src={spotify_icon} width="100px" id={style.thumbnail} />
