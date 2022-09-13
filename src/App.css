@@ -21,3 +21,11 @@ address {
   color: whitesmoke;
   font-family: Sans-Serif;
 }
+
+
+.rti--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  --rti-bg: var(--primary-color) !important;
+}
