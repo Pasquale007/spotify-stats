@@ -22,7 +22,6 @@ export default function Mix() {
         timer = setTimeout(recommendations, 3000);
 
         async function recommendations() {
-            console.log(genres.join(","));
             let recommendations = await HelperFunctions.fetchRecommendations(items, "", "", genres.join(","));
             setRecommendations(recommendations);
         }
@@ -34,7 +33,6 @@ export default function Mix() {
 
     function validate(e) {
         if (genres.length >= maxGenres) {
-            console.log("too many items");
             setShowAlert(true);
             return false;
         }
@@ -54,9 +52,9 @@ export default function Mix() {
         <div className={style.main}>
 
             <h1>Make your own mix</h1>
-            <label htmlFor="genres">Genres:</label>
+            {setAlert()}
             <div className={style.tagInput}>
-                {setAlert()}
+                <label htmlFor="genres">Genres:</label>
                 <TagsInput
                     value={genres}
                     beforeAddValidate={e => validate(e)}
