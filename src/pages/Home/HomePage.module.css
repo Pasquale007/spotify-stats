@@ -22,7 +22,6 @@ label {
 
 .recommendations {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
@@ -38,10 +37,6 @@ label {
     flex-direction: row;
     justify-content: space-evenly;
     width: 70%;
-    /*border-radius: 20px;
-    background: rgba(25, 20, 20, 0.32);
-    backdrop-filter: blur(4.6px);
-    -webkit-backdrop-filter: blur(4.6px);*/
 }
 
 .offer h2 {
@@ -134,10 +129,14 @@ label {
 
     .offer {
         flex-direction: column;
+        width: 100%;
     }
 
     .offer h2 {
         order: -1;
     }
 
+    .recommendations {
+        flex-direction: column;
+    }
 }
