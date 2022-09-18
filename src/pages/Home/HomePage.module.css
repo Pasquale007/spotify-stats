@@ -134,6 +134,7 @@ label {
 
     .offer {
         flex-direction: column;
+        width: 100%;
     }
 
     .offer h2 {

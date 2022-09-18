@@ -35,7 +35,9 @@
         flex-direction: column;
         justify-content: center;
         padding: 0%;
+        margin: 0%;
     }
+
     .main img {
         margin-top: 2%;
     }
