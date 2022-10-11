@@ -6,12 +6,27 @@ import style from './Navigation.module.css'
 
 import logo from '../../assets/logo/logo.png';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import defaultUserImage from '../../assets/defaultUser.png'
 
 export default function Navigation() {
+    const [defaultUser, setDefaultUser] = useState(defaultUserImage);
+
+    useEffect(() => {
+        let image = JSON.parse(sessionStorage.getItem('user')).images[0].url;
+        if (image) {
+           setDefaultUser(image);
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(defaultUser);
+    }, [defaultUser]);
 
     function getName() {
+
         return <span>
-            <img src={JSON.parse(sessionStorage.getItem('user')).images[0].url}
+            <img src={defaultUser}
                 style={{ heigth: "40px", width: "40px", borderRadius: "60px" }} />
             <b>{JSON.parse(sessionStorage.getItem('user')).display_name}</b>
         </span>
