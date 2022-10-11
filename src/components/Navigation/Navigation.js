@@ -13,6 +13,14 @@ export default function Navigation() {
     const [defaultUser, setDefaultUser] = useState(defaultUserImage);
 
     useEffect(() => {
+        const stickyElm = document.getElementById(style.root)
+
+        const observer = new IntersectionObserver(
+            ([e]) => { e.target.classList.toggle(style.isSticky, e.intersectionRatio < 1); console.log(e.target.classList) },
+            { threshold: [1] }
+        );
+        observer.observe(stickyElm)
+
         let image = JSON.parse(sessionStorage.getItem('user')).images[0].url;
         if (image) {
             setDefaultUser(image);
@@ -20,6 +28,7 @@ export default function Navigation() {
     }, []);
 
     function getName() {
+
         return <span>
             <img src={defaultUser}
                 style={{ heigth: "40px", width: "40px", borderRadius: "60px" }} />
