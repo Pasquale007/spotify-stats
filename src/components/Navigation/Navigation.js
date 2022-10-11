@@ -16,7 +16,7 @@ export default function Navigation() {
         const stickyElm = document.getElementById(style.root)
 
         const observer = new IntersectionObserver(
-            ([e]) => { e.target.classList.toggle(style.isSticky, e.intersectionRatio < 1); console.log(e.target.classList) },
+            ([e]) => e.target.classList.toggle(style.isSticky, e.intersectionRatio < 1),
             { threshold: [1] }
         );
         observer.observe(stickyElm)
