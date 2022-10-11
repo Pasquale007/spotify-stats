@@ -17,7 +17,10 @@ export default function Navigation() {
 
         const observer = new IntersectionObserver(
             ([e]) => e.target.classList.toggle(style.isSticky, e.intersectionRatio < 1),
-            { threshold: [1] }
+            {
+                rootMargin: '-1px',
+                threshold: [1]
+            }
         );
         observer.observe(stickyElm)
 
