@@ -60,8 +60,9 @@ export default function HomePage() {
             <h1>Our suggestions for you:</h1>
             <div className={style.recommendations}>
                 {recommendations?.map((track) => {
+                    { console.log(track) }
                     return (
-                        <DetailedTracks key={track.id} data={track} />
+                        < DetailedTracks key={track.name + "_" + track.id} data={track} />
                     );
                 })}
                 <div id={style.infinitiveScrollPlaceholder}>
