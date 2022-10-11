@@ -17,8 +17,8 @@ export default function HomePage() {
     const whyUs = ["It's Free", "No configuration necessary", "Easy to use", "Simple design", "Easy connect via your spotify account", "Access all time history from spotify direct"];
 
     useEffect(() => {
+        //get the element for infinitive loading
         let scrollElement = document.getElementById(style.infinitiveScrollPlaceholder)
-        console.log(scrollElement)
         let observer = new IntersectionObserver(element => { loadContent() })
         observer.observe(scrollElement)
     }, [])
