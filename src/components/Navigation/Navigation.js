@@ -15,16 +15,11 @@ export default function Navigation() {
     useEffect(() => {
         let image = JSON.parse(sessionStorage.getItem('user')).images[0].url;
         if (image) {
-           setDefaultUser(image);
+            setDefaultUser(image);
         }
     }, []);
 
-    useEffect(() => {
-        console.log(defaultUser);
-    }, [defaultUser]);
-
     function getName() {
-
         return <span>
             <img src={defaultUser}
                 style={{ heigth: "40px", width: "40px", borderRadius: "60px" }} />
