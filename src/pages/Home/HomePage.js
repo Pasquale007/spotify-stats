@@ -6,10 +6,10 @@ import Cluster from '../../components/Cluster/Cluster';
 
 export default function HomePage() {
 
-    const [visibleData, setVisibleData] = useState(5);
-    const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
+    const updatingData = 5;
+    const [loading, setLoading] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
-
+    var recomments = [];
     const rotatingWords = ["understanding", "checking", "controlling", "editing", "comparing"];
     const offer = ["Check your top Tracks", "Check your top Artists",
         "Check every of your playlist", "Edit your playlists", "Check your followed artists"];
@@ -19,26 +19,37 @@ export default function HomePage() {
     useEffect(() => {
         //get the element for infinitive loading
         let scrollElement = document.getElementById(style.infinitiveScrollPlaceholder)
-        let observer = new IntersectionObserver(element => { loadContent() })
-        observer.observe(scrollElement)
+        let observer = new IntersectionObserver(element => { loadContent(recomments) })
+        observer.observe(scrollElement);
+        loadContent(recommendations);
     }, [])
 
     useEffect(() => {
-        console.log(recommendations.length)
-    }, [recommendations])
-    useEffect(() => {
-        async function recommendations() {
-            let recommendations = await HelperFunctions.fetchRecommendations(visibleData);
-            setRecommendations(recommendations);
-        }
-        recommendations();
-    }, [visibleData, timeRange])
+        console.log("update recs: ");
+        console.log(recommendations);
+    }, [recomments]);
 
-    async function loadContent() {
-        let newData = await HelperFunctions.fetchRecommendations(visibleData);
-        console.log(newData)
-        console.log(recommendations)
-        setRecommendations([...recommendations, ...newData])
+    useEffect(() => {
+        if (loading) {
+            console.log("Loading...")
+        } else {
+            console.log("Finished Loading")
+        }
+    }, [loading]);
+
+    async function loadContent(oldData) {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+
+        let newData = await HelperFunctions.fetchRecommendations(updatingData);
+        let res = [...oldData, ...newData]
+
+        console.log(oldData.length + " + " + newData.length + " = " + res.length)
+        setRecommendations([...oldData, ...newData]);
+        recomments = [...oldData, ...newData]
+        setLoading(false);
     }
 
     return (
@@ -65,9 +76,8 @@ export default function HomePage() {
             <h1>Our suggestions for you:</h1>
             <div className={style.recommendations}>
                 {recommendations?.map((track) => {
-                    { console.log(track) }
                     return (
-                        < DetailedTracks key={track.name + "_" + track.id} data={track} />
+                        <DetailedTracks key={track.name + "_" + track.id} data={track} />
                     );
                 })}
                 <div id={style.infinitiveScrollPlaceholder}>

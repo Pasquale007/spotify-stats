@@ -30,7 +30,6 @@ export default function Navigation() {
     }, []);
 
     function getName() {
-
         return <span>
             <img src={defaultUser}
                 style={{ heigth: "40px", width: "40px", borderRadius: "60px" }} />
