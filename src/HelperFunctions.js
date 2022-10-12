@@ -77,7 +77,7 @@ export default class HelperFunctions {
 
     static async fetchRecommendations(limit = 50, artists = "", tracks = "", genres = "") {
         if (!sessionStorage.getItem("accessToken")) {
-            return;
+            return [];
         }
 
         if (artists === "") {

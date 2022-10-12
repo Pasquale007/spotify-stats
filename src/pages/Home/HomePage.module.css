@@ -142,10 +142,11 @@ label {
 }
 
 #infinitiveScrollPlaceholder {
+    margin-right: auto;
+    margin-left: auto;
     position: relative;
     height: 500px;
     top: -1000px;
     width: 80%;
-    background-color: rgba(91, 94, 97, 0.763);
     pointer-events: none;
 }

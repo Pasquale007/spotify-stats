@@ -23,8 +23,7 @@ export default function Navigation() {
             }
         );
         observer.observe(stickyElm)
-
-        let image = JSON.parse(sessionStorage.getItem('user')).images[0].url;
+        let image = JSON.parse(sessionStorage.getItem('user'))?.images?.at(0)?.url;
         if (image) {
             setDefaultUser(image);
         }

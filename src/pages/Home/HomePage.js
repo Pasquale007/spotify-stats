@@ -24,6 +24,9 @@ export default function HomePage() {
     }, [])
 
     useEffect(() => {
+        console.log(recommendations.length)
+    }, [recommendations])
+    useEffect(() => {
         async function recommendations() {
             let recommendations = await HelperFunctions.fetchRecommendations(visibleData);
             setRecommendations(recommendations);
@@ -33,7 +36,9 @@ export default function HomePage() {
 
     async function loadContent() {
         let newData = await HelperFunctions.fetchRecommendations(visibleData);
-        setRecommendations(recommendations => [...recommendations, ...newData])
+        console.log(newData)
+        console.log(recommendations)
+        setRecommendations([...recommendations, ...newData])
     }
 
     return (
@@ -66,7 +71,6 @@ export default function HomePage() {
                     );
                 })}
                 <div id={style.infinitiveScrollPlaceholder}>
-                    <p>asdf</p>
                 </div>
             </div>
         </div >
