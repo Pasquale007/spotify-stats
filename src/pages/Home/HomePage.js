@@ -9,7 +9,6 @@ export default function HomePage() {
     const updatingData = 5;
     const [loading, setLoading] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
-    var recomments = [];
     const rotatingWords = ["understanding", "checking", "controlling", "editing", "comparing"];
     const offer = ["Check your top Tracks", "Check your top Artists",
         "Check every of your playlist", "Edit your playlists", "Check your followed artists"];
@@ -19,15 +18,10 @@ export default function HomePage() {
     useEffect(() => {
         //get the element for infinitive loading
         let scrollElement = document.getElementById(style.infinitiveScrollPlaceholder)
-        let observer = new IntersectionObserver(element => { loadContent(recomments) })
+        let observer = new IntersectionObserver(element => { loadContent(recommendations) })
         observer.observe(scrollElement);
         loadContent(recommendations);
     }, [])
-
-    useEffect(() => {
-        console.log("update recs: ");
-        console.log(recommendations);
-    }, [recomments]);
 
     useEffect(() => {
         if (loading) {
@@ -47,8 +41,7 @@ export default function HomePage() {
         let res = [...oldData, ...newData]
 
         console.log(oldData.length + " + " + newData.length + " = " + res.length)
-        setRecommendations([...oldData, ...newData]);
-        recomments = [...oldData, ...newData]
+        setRecommendations((state) => { return [...state, ...newData] });
         setLoading(false);
     }
 
