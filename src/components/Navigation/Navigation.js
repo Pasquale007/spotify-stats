@@ -61,31 +61,33 @@ export default function Navigation() {
     }
 
     return (
-        <Navbar bg="primary" expand="lg" sticky="top" id={style.root}>
-            <Navbar.Brand href="/">
-                <img
-                    alt="Logo"
-                    src={logo}
-                    width="50"
-                    height="50"
-                />{' '}
-                {_HomepageName}
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/tracks">Tracks</Nav.Link>
-                    <Nav.Link as={Link} to="/artists">Artists</Nav.Link>
-                    <Nav.Link as={Link} to="/follower">Your Artists</Nav.Link>
-                    <Nav.Link as={Link} to="/mix">Your Mix</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-            <Navbar.Collapse className="justify-content-end">
-                <Navbar.Text>
-                    {isloggedIn()}
-                </Navbar.Text>
-            </Navbar.Collapse>
-        </Navbar>
+        <b>
+            <Navbar bg="primary" expand="lg" sticky="top" id={style.root}>
+                <Navbar.Brand href="/">
+                    <img
+                        alt="Logo"
+                        src={logo}
+                        width="50"
+                        height="50"
+                    />{' '}
+                    {_HomepageName}
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/tracks">Tracks</Nav.Link>
+                        <Nav.Link as={Link} to="/artists">Artists</Nav.Link>
+                        <Nav.Link as={Link} to="/follower">Your Artists</Nav.Link>
+                        <Nav.Link as={Link} to="/mix">Your Mix</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+                <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Text>
+                        {isloggedIn()}
+                    </Navbar.Text>
+                </Navbar.Collapse>
+            </Navbar>
+        </b>
     );
 }

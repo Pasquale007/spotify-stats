@@ -19,55 +19,50 @@ export default function HomePage() {
     useEffect(() => {
         //get the element for infinitive loading
         let scrollElement = document.getElementById(style.infinitiveScrollPlaceholder)
-        let observer = new IntersectionObserver(element => { loadContent(recommendations) })
+        let observer = new IntersectionObserver(element => { loadContent() })
         observer.observe(scrollElement);
-        loadContent(recommendations);
+        loadContent();
     }, [])
 
-    useEffect(() => {
-        if (loading) {
-            console.log("Loading...")
-        } else {
-            console.log("Finished Loading")
-        }
-    }, [loading]);
-
-    async function loadContent(oldData) {
+    async function loadContent() {
         if (loading) {
             return;
         }
         setLoading(true);
 
         let newData = await HelperFunctions.fetchRecommendations(updatingData);
-        let res = [...oldData, ...newData]
-
-        console.log(oldData.length + " + " + newData.length + " = " + res.length)
         setRecommendations((state) => { return [...state, ...newData] });
         setLoading(false);
     }
 
     return (
         <div className={style.root}>
-            <Hero />
+            <section id="hero">
+                <Hero />
+            </section>
             <RotatingWords />
-            <div className={style.offer}>
-                <Cluster data={offer} />
-                <h2>What we offer you?</h2>
-            </div>
-            <div className={style.offer}>
-                <h2>Why should you use us?</h2>
-                <Cluster data={whyUs} />
-            </div>
-            <h1>Our suggestions for you:</h1>
-            <div className={style.recommendations}>
-                {recommendations?.map((track) => {
-                    return (
-                        <DetailedTracks key={track.name + "_" + track.id} data={track} />
-                    );
-                })}
-                <div id={style.infinitiveScrollPlaceholder}>
+            <section id="offer">
+                <div className={style.offer}>
+                    <Cluster data={offer} />
+                    <h2>What we offer you?</h2>
                 </div>
-            </div>
+                <div className={style.offer}>
+                    <h2>Why should you use us?</h2>
+                    <Cluster data={whyUs} />
+                </div>
+            </section>
+            <section id="recommendations">
+                <h1>Our suggestions for you:</h1>
+                <div className={style.recommendations}>
+                    {recommendations?.map((track) => {
+                        return (
+                            <DetailedTracks key={track.name + "_" + track.id} data={track} />
+                        );
+                    })}
+                    <div id={style.infinitiveScrollPlaceholder}>
+                    </div>
+                </div>
+            </section>
         </div >
     );
 }
