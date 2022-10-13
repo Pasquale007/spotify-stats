@@ -11,6 +11,7 @@ Link {
 .isSticky {
     opacity: .5;
 }
+
 .isSticky:hover {
     opacity: 1;
 }

@@ -38,11 +38,13 @@ export default function Navigation() {
     };
 
     function isloggedIn() {
+        let loginField;
+
         //check if user is signed in
         if (!sessionStorage.getItem('accessToken')) {
-            return <Nav.Link as={Link} to="/login">Login</Nav.Link>;
+            loginField = <Nav.Link as={Link} to="/login">Login</Nav.Link>;
         } else {
-            return <NavDropdown title={getName()} >
+            loginField = <NavDropdown title={getName()} >
                 <NavDropdown.Item href="#playlists">
                     <Nav.Link as={Link} to="/playlists">Your Playlists</Nav.Link>
                 </NavDropdown.Item>
@@ -53,9 +55,9 @@ export default function Navigation() {
                 <NavDropdown.Item href="#logout">
                     <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
                 </NavDropdown.Item>
-
             </NavDropdown >
         }
+        return loginField;
     }
 
     return (
