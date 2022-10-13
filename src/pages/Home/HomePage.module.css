@@ -46,62 +46,15 @@ label {
     justify-content: center;
 }
 
-.rotatingWords {
-    box-sizing: content-box;
-    height: 50px;
-    padding: 30px 5px;
-    display: flex;
-    justify-content: center;
-}
 
-.words {
-    overflow: hidden;
-}
-
-.rotatingSpan {
-    display: block;
-    height: 100%;
-    padding-left: 10px;
-    animation: spin_words 12s infinite;
-}
-
-.rotatingSpan h1 {
-    color: var(--primary-color);
-}
-
-
-@keyframes spin_words {
-    15% {
-        transform: translateY(-112%);
-    }
-
-    25% {
-        transform: translateY(-100%);
-    }
-
-    35% {
-        transform: translateY(-212%);
-    }
-
-    50% {
-        transform: translateY(-200%);
-    }
-
-    60% {
-        transform: translateY(-312%);
-    }
-
-    75% {
-        transform: translateY(-300%);
-    }
-
-    85% {
-        transform: translateY(-412%);
-    }
-
-    100% {
-        transform: translateY(-400%);
-    }
+#infinitiveScrollPlaceholder {
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    height: 500px;
+    top: -1000px;
+    width: 80%;
+    pointer-events: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -117,16 +70,6 @@ label {
         margin-bottom: 400px;
     }
 
-    .rotatingWords {
-        display: block;
-        margin-bottom: 50px;
-    }
-
-    .words {
-        overflow: hidden;
-        height: 40px;
-    }
-
     .offer {
         flex-direction: column;
         width: 100%;
@@ -139,14 +82,4 @@ label {
     .recommendations {
         flex-direction: column;
     }
-}
-
-#infinitiveScrollPlaceholder {
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
-    height: 500px;
-    top: -1000px;
-    width: 80%;
-    pointer-events: none;
 }

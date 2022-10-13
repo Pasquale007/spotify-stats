@@ -1,0 +1,13 @@
+.main {
+    background-image: url('../../assets/hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background-attachment: fixed;*/
+    height: 100vh;
+}
+
+#catchingPhrase {
+    padding-top: 30%;
+    color: black;
+    font-size: 70px;
+}

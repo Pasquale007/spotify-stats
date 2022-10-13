@@ -3,13 +3,14 @@ import HelperFunctions from '../../HelperFunctions.js';
 import { useEffect, useState } from 'react';
 import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 import Cluster from '../../components/Cluster/Cluster';
+import Hero from '../../components/Hero/Hero';
+import RotatingWords from '../../components/RotatingWords/RotatingWords';
 
 export default function HomePage() {
 
     const updatingData = 5;
     const [loading, setLoading] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
-    const rotatingWords = ["understanding", "checking", "controlling", "editing", "comparing"];
     const offer = ["Check your top Tracks", "Check your top Artists",
         "Check every of your playlist", "Edit your playlists", "Check your followed artists"];
 
@@ -47,17 +48,8 @@ export default function HomePage() {
 
     return (
         <div className={style.root}>
-            <div className={style.rotatingWords}>
-                <h1>Are you intested in </h1>
-                <div className={style.words}>
-                    {rotatingWords.map(word => {
-                        return (
-                            <div className={style.rotatingSpan}><h1>{word}</h1></div>
-                        );
-                    })}
-                </div>
-                <h1> your spotify behavior?</h1>
-            </div>
+            <Hero />
+            <RotatingWords />
             <div className={style.offer}>
                 <Cluster data={offer} />
                 <h2>What we offer you?</h2>
