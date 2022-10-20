@@ -31,7 +31,7 @@
         transform: translateY(-100%);
     }
 
-    35% {
+    40% {
         transform: translateY(-212%);
     }
 
@@ -39,7 +39,7 @@
         transform: translateY(-200%);
     }
 
-    60% {
+    65% {
         transform: translateY(-312%);
     }
 
@@ -47,7 +47,7 @@
         transform: translateY(-300%);
     }
 
-    85% {
+    90% {
         transform: translateY(-412%);
     }
 
