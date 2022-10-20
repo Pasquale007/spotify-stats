@@ -7,7 +7,14 @@
 }
 
 #catchingPhrase {
-    padding-top: 30%;
+    margin-left: 22%;
+    margin-right: 20%;
+    padding-top: 10%;
     color: black;
     font-size: 70px;
+}
+
+#font {
+    /*color: var(--teritary-color);*/
+    color: var(--secondary-color);
 }

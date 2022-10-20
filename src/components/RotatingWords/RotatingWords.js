@@ -2,7 +2,7 @@
 import style from './RotatingWords.module.css'
 
 export default function RotatingWords() {
-    const rotatingWords = ["understanding", "checking", "controlling", "editing", "comparing"];
+    const rotatingWords = ["understanding", "checking", "controlling", "editing", "understanding"];
 
     return (
         <div className={style.rotatingWords}>
