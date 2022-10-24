@@ -1,0 +1,43 @@
+.root {
+    width: 70vh;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px 10px #232222;
+    background: rgba(237, 237, 237, 0.82);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);
+}
+
+@keyframes flyIn {
+
+    50% {
+        transform: translateX(0vh);
+    }
+
+    100% {
+        transform: translateX(0vh);
+        transform: scale(150%, 150%);
+    }
+}
+
+@keyframes flyOut {
+
+    50% {
+        transform: scale(100%, 0%);
+    }
+
+    100% {
+        transform: translateX(-300vh);
+    }
+}
+
+#close {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    cursor: pointer;
+}

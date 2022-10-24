@@ -3,3 +3,11 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+#flyingBlock {
+    margin-top: 10%;
+    position: fixed;
+    transform: translateX(-200vh);
+    z-index: 10000;
+    transition-duration: 1.5s;
+}

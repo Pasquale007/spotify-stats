@@ -186,6 +186,17 @@ export default class HelperFunctions {
         return [];
     }
 
+    static async getPlaylistTracks(id) {
+        let promise = await axios.get(endpoint + "/playlists/" + id + "/tracks", {
+            headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+        }});
+        if (promise) {
+            return promise.data.items;
+        }
+        return [];
+    }
+
 
     static async getTrackInfo(track) {
         let promise = await axios.get(endpoint + "/tracks/" + track.id, {
