@@ -1,4 +1,4 @@
-.root {
+#root {
     width: 70vh;
     height: 50vh;
     display: flex;
@@ -10,6 +10,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(4.6px);
     -webkit-backdrop-filter: blur(4.6px);
+    margin-top: 10%;
+    position: fixed;
+    transform: translateX(-200vh);
+    z-index: 10000;
+    transition-duration: 1.5s;
 }
 
 @keyframes flyIn {
@@ -24,20 +29,23 @@
     }
 }
 
-@keyframes flyOut {
-
-    50% {
-        transform: scale(100%, 0%);
-    }
-
-    100% {
-        transform: translateX(-300vh);
-    }
-}
-
 #close {
     position: absolute;
     top: 2px;
     right: 20px;
     cursor: pointer;
+}
+
+.formInput {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#textarea {
+    width: 400px;
+    height: 200px;
 }
