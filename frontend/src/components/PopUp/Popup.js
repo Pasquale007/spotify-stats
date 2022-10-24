@@ -29,6 +29,7 @@ export default function Popup() {
         element.setAttribute("style", "transform: translateX(-300vh)");
     }
 
+    //Wird nicht aufgerufen
     function submit() {
         console.log("Error. Not implemented yet. Sorry");
         close();
