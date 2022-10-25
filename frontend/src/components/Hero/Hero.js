@@ -1,9 +1,9 @@
 import style from './Hero.module.css'
 
-export default function Hero() {
-    const phrase1 = "Die Musik drückt aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.";
+export default function Hero({ phrasetop, phraselow }) {
+    const phrase1 = phrasetop || "Die Musik drückt aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.";
     //const phrase1 = "Peace. Love.";
-    const phrase2 = "~ Viktor Hugo";
+    const phrase2 = phraselow || "~ Viktor Hugo";
     //const phrase2 = "Music";
     return (
         <div className={style.main}>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import { endpoint, REDIRECT_URI, AUTH_ENDPOINT, CLIENT_ID, CLIENT_SECRET, me } from './_defaultValues'
+import Hero from './components/Hero/Hero';
 
 export default function Callback() {
     const querystring = require('querystring');
@@ -66,8 +67,8 @@ export default function Callback() {
     }
 
     return (
-        <h1 style={{ textAlign: 'center' }}>
-            Pending...
-        </h1>
+        <div style={{ "marign-left": "auto" }}>
+            <Hero phrasetop="Pending..." phraselow=" " />
+        </div>
     );
 }
