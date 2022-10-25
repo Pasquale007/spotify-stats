@@ -8,6 +8,14 @@ export default function Popup() {
     const playlist = useContext(ActivePlaylistContext);
 
     useEffect(() => {
+        let popup = document.getElementById(style.root);
+        if (editable === false) {
+            console.log(popup);
+            popup.style.pointerEvents = "none";
+        }
+    }, [editable])
+
+    useEffect(() => {
         if (playlist) {
             let playlistName = JSON.parse(sessionStorage.getItem("user")).display_name;
             if (playlist.owner.display_name === playlistName) {
@@ -21,7 +29,6 @@ export default function Popup() {
 
     function open() {
         let element = document.getElementById(style.root);
-        console.log(playlist)
         element.setAttribute("style", "transform: translateX(0vh)");
         element.setAttribute("style", "transform: scale(150%,150%)");
     }
@@ -56,11 +63,9 @@ export default function Popup() {
                 </label>
                 <label htmlFor="collab">
                     Collaborative:
-                    <ToggleSwitch value={playlist?.collaborative} name="collab"/>
+                    <ToggleSwitch value={playlist?.collaborative} name="collab" />
                 </label>
-
                 <input type="submit" value="Submit" />
-
             </form>
 
         </div>

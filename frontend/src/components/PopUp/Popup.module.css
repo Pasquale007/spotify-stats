@@ -17,6 +17,11 @@
     transition-duration: 1.5s;
 }
 
+#root h2,
+label {
+    color: black;
+}
+
 @keyframes flyIn {
 
     50% {
