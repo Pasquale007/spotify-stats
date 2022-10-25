@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ActivePlaylistContext } from "../../Contexts";
+import ToggleSwitch from "../Switch/ToggleSwitch";
 import style from './Popup.module.css'
 
 export default function Popup() {
@@ -20,6 +21,7 @@ export default function Popup() {
 
     function open() {
         let element = document.getElementById(style.root);
+        console.log(playlist)
         element.setAttribute("style", "transform: translateX(0vh)");
         element.setAttribute("style", "transform: scale(150%,150%)");
     }
@@ -47,6 +49,16 @@ export default function Popup() {
                     Description:
                     <textarea name="desc" id={style.textarea} defaultValue={playlist?.description}></textarea>
                 </label>
+                <label htmlFor="public">
+                    Public:
+                    <ToggleSwitch value={playlist?.public} name="public" />
+
+                </label>
+                <label htmlFor="collab">
+                    Collaborative:
+                    <ToggleSwitch value={playlist?.collaborative} name="collab"/>
+                </label>
+
                 <input type="submit" value="Submit" />
 
             </form>
