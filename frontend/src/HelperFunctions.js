@@ -189,8 +189,9 @@ export default class HelperFunctions {
     static async getPlaylistTracks(id) {
         let promise = await axios.get(endpoint + "/playlists/" + id + "/tracks", {
             headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-        }});
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        });
         if (promise) {
             return promise.data.items;
         }
@@ -234,5 +235,21 @@ export default class HelperFunctions {
             genres = genres.concat(promise.data.genres);
         }
         return genres;
+    }
+
+    static async updatePlaylist(playlistId) {
+        let promise = await axios.put(endpoint + "/playlists/" + playlistId, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        }, {
+            name: "",
+            public: false,
+            collaborative: false,
+            description: "Test"
+        }
+        )
+        console.log(promise);
+        return promise;
     }
 }

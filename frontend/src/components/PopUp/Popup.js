@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ActivePlaylistContext } from "../../Contexts";
+import HelperFunctions from "../../HelperFunctions";
 import ToggleSwitch from "../Switch/ToggleSwitch";
 import style from './Popup.module.css'
 
@@ -10,8 +11,8 @@ export default function Popup() {
     useEffect(() => {
         let popup = document.getElementById(style.root);
         if (editable === false) {
-            console.log(popup);
-            popup.style.pointerEvents = "none";
+            //sth like this
+            // popup.style.pointerEvents = "none";
         }
     }, [editable])
 
@@ -29,18 +30,20 @@ export default function Popup() {
 
     function open() {
         let element = document.getElementById(style.root);
-        element.setAttribute("style", "transform: translateX(0vh)");
-        element.setAttribute("style", "transform: scale(150%,150%)");
+        element.style.transform = "translateX(0vh)"
+        element.style.transform = "scale(150%,150%)"
     }
 
     function close() {
         let element = document.getElementById(style.root);
-        element.setAttribute("style", "transform: translateX(-300vh)");
+        element.style.transform = "translateX(-300vh)"
     }
 
     //Wird nicht aufgerufen
-    function submit() {
+    async function submit() {
         console.log("Error. Not implemented yet. Sorry");
+        let response = await HelperFunctions.updatePlaylist(playlist.id);
+        console.log(response);
         close();
     }
 
@@ -49,8 +52,8 @@ export default function Popup() {
             <h2 id={style.close} onClick={close}>X</h2>
             <form className={style.formInput} onSubmit={e => submit}>
                 <label htmlFor="name">
-                    Name:
-                    <input name="name" type="text" defaultValue={playlist?.name}></input>
+                    Name*:
+                    <input name="name" type="text" defaultValue={playlist?.name} required></input>
                 </label>
                 <label htmlFor="desc">
                     Description:
@@ -66,8 +69,8 @@ export default function Popup() {
                     <ToggleSwitch value={playlist?.collaborative} name="collab" />
                 </label>
                 <input type="submit" value="Submit" />
+                <p>* are required</p>
             </form>
-
         </div>
     );
 }

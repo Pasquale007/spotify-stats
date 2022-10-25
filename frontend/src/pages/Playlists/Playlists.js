@@ -21,14 +21,14 @@ export default function Playlists() {
         <div className={style.main}>
             <ActivePlaylistContext.Provider value={selectedPlaylist}>
                 <Popup />
-                {playlists.map(playlist => {
-                    return (
-                        <div key={playlist.id} onClick={() => setSelectedPlaylist(playlist)}>
-                            <Playlist data={playlist} />
-                        </div>
-                    );
-                })}
             </ActivePlaylistContext.Provider>
+            {playlists.map(playlist => {
+                return (
+                    <div key={playlist.id} onClick={() => setSelectedPlaylist(playlist)}>
+                        <Playlist data={playlist} />
+                    </div>
+                );
+            })}
 
         </div>
     );

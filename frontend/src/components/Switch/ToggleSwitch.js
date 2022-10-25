@@ -7,7 +7,7 @@ export default function ToggleSwitch({ value, name }) {
     return (
         <div className={style.switch} onClick={() => setToggle(!toggle)}>
             <input name={name} type="checkbox" id={style.box} checked={toggle} />
-            <span class={style.slider}></span>
+            <span className={style.slider}></span>
         </div >
     );
 }
