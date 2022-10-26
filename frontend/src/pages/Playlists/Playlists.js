@@ -24,7 +24,7 @@ export default function Playlists() {
             </ActivePlaylistContext.Provider>
             {playlists.map(playlist => {
                 return (
-                    <div key={playlist.id} onClick={() => setSelectedPlaylist(playlist)}>
+                    <div className={style.displaywithmargin} key={playlist.id} onClick={() => setSelectedPlaylist(playlist)}>
                         <Playlist data={playlist} />
                     </div>
                 );

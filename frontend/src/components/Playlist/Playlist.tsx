@@ -3,7 +3,6 @@ import { useState } from 'react';
 import style from './Playlist.module.css'
 import spotify_icon from '../../assets/Spotify_Icon_RGB_Green.png'
 
-
 type props = {
     data: Playlist
 }
