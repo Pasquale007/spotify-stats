@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from './Tracks.module.css'
 
-import HelperFunctions from '../../HelperFunctions.js'
+import HelperFunctions, { time_ranges } from '../../HelperFunctions.ts'
 import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 import Filter from '../../components/Filter/Filter';
 export default function Tracks() {
@@ -9,7 +9,7 @@ export default function Tracks() {
     const [tracks, setTracks] = useState([]);
     const [genres, setGenres] = useState([]);
     const [visibleData, setVisibleData] = useState(5);
-    const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
+    const [timeRange, setTimeRange] = useState(time_ranges.medium);
 
     useEffect(() => {
         fetchTracks();

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DetailedArtists from "../../components/DetailedArtists/DetailedArtists";
+import DetailedArtists from "../../components/DetailedArtists/DetailedArtists.js";
 import HelperFunctions from "../../HelperFunctions";
 import style from './FollowedArtists.module.css'
 

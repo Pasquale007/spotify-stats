@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import querystring from 'querystring';
 import { AUTH_ENDPOINT, CLIENT_ID, CLIENT_SECRET, endpoint } from "./_defaultValues";
 
@@ -8,7 +8,7 @@ axios.interceptors.response.use((response) => {
 },
     function (error) {
         const originalRequest = error.config;
-        if (!(error.response.status === 401 && !originalRequest._retry)) {
+        if (!(error.response?.status === 401 && !originalRequest._retry)) {
             return;
         }
         originalRequest._retry = true;
@@ -36,14 +36,20 @@ axios.interceptors.response.use((response) => {
             });
     });
 
-export default class HelperFunctions {
-    static time_ranges = {
-        short: "short_term",
-        medium: "medium_term",
-        long: "long_term",
-    }
+type times = {
+    short: string,
+    medium: string,
+    long: string
+}
+export const time_ranges: times = {
+    short: "short_term",
+    medium: "medium_term",
+    long: "long_term",
+}
 
-    static async fetchTopTracks(limit, range = HelperFunctions.time_ranges.medium) {
+export default class HelperFunctions {
+
+    static async fetchTopTracks(limit: number, range: string = time_ranges.medium) {
         let data = {
             limit: limit,
             time_range: range,
@@ -59,7 +65,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchTopArtists(limit, range = HelperFunctions.time_ranges.medium) {
+    static async fetchTopArtists(limit: number, range = time_ranges.medium) {
         let data = {
             limit: limit,
             time_range: range,
@@ -75,7 +81,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchRecommendations(limit = 50, artists = "", tracks = "", genres = "") {
+    static async fetchRecommendations(limit: number = 50, artists: string = "", tracks: any = "", genres: any = "") {
         if (!sessionStorage.getItem("accessToken")) {
             return [];
         }
@@ -105,7 +111,7 @@ export default class HelperFunctions {
                 let result = await HelperFunctions.getArtistsGenres(topTracks[i]);
                 topTracks[i].genres = result;
             }
-            let list = [];
+            let list: Array<any> = [];
             for (let i = 0; i < topTracks.length; i++) {
                 for (let j = 0; j < topTracks[i].genres.length; j++) {
                     let genre = topTracks[i].genres[j];
@@ -186,7 +192,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async getPlaylistTracks(id) {
+    static async getPlaylistTracks(id: any) {
         let promise = await axios.get(endpoint + "/playlists/" + id + "/tracks", {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -199,7 +205,7 @@ export default class HelperFunctions {
     }
 
 
-    static async getTrackInfo(track) {
+    static async getTrackInfo(track: any) {
         let promise = await axios.get(endpoint + "/tracks/" + track.id, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -211,7 +217,7 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async getTrackInfoHref(track) {
+    static async getTrackInfoHref(track: any) {
         let promise = await axios.get(track.href, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -224,8 +230,8 @@ export default class HelperFunctions {
     }
 
 
-    static async getArtistsGenres(track) {
-        let genres = [];
+    static async getArtistsGenres(track: any) {
+        let genres: Array<any> = [];
         for (let i = 0; i < track.artists.length; i++) {
             let promise = await axios.get(track.artists[i].href, {
                 headers: {
@@ -237,16 +243,16 @@ export default class HelperFunctions {
         return genres;
     }
 
-    static async updatePlaylist(playlistId) {
-        let promise = await axios.put(endpoint + "/playlists/" + playlistId, {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-            }
-        }, {
+    static async updatePlaylist(playlistId: number) {
+        let promise: AxiosResponse<any> = await axios.put(endpoint + "/playlists/" + playlistId, {
             name: "",
             public: false,
             collaborative: false,
             description: "Test"
+        }, {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
         }
         )
         console.log(promise);

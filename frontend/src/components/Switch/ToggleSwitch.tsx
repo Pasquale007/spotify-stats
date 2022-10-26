@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import style from './ToggleSwitch.module.css'
 
-export default function ToggleSwitch({ value, name }) {
+type props = {
+    value: boolean,
+    name: string,
+}
+
+export default function ToggleSwitch({ value, name }: props) {
     const [toggle, setToggle] = useState(value);
 
     return (

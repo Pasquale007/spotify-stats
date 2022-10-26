@@ -4,7 +4,7 @@ import { BsFacebook, BsInstagram, BsWhatsapp, BsTwitter } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 function Footer() {
-    const size = 35;
+    const SIZE = 35;
 
     return (
         <div className={style.footer}>
@@ -13,22 +13,22 @@ function Footer() {
                     <div className={style.sozialMedia}>
                         <div className={style.sozial}>
                             <a href={_linkFacebook} target="_blank" rel="noopener noreferrer">
-                                <BsFacebook size={size} />
+                                <BsFacebook size={SIZE} />
                             </a>
                         </div>
                         <div className={style.sozial}>
                             <a href={_linkInstagram} target="_blank" rel="noopener noreferrer">
-                                <BsInstagram size={size} />
+                                <BsInstagram size={SIZE} />
                             </a>
                         </div>
                         <div className={style.sozial}>
                             <a href={_linkWhatsapp} target="_blank" rel="noopener noreferrer">
-                                <BsWhatsapp size={size} />
+                                <BsWhatsapp size={SIZE} />
                             </a>
                         </div>
                         <div className={style.sozial}>
                             <a href={_linkTwitter} target="_blank" rel="noopener noreferrer">
-                                <BsTwitter size={size} />
+                                <BsTwitter size={SIZE} />
                             </a>
                         </div>
                     </div>

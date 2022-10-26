@@ -1,15 +1,15 @@
 
 import { useEffect, useState } from 'react';
-import DetailedArtists from '../../components/DetailedArtists/DetailedArtists';
+import DetailedArtists from '../../components/DetailedArtists/DetailedArtists.js';
 import Filter from '../../components/Filter/Filter';
-import HelperFunctions from '../../HelperFunctions';
+import HelperFunctions, { time_ranges } from '../../HelperFunctions';
 import style from './Artists.module.css'
 
 export default function Artists() {
 
     const [artists, setArtists] = useState([]);
     const [visibleData, setVisibleData] = useState(5);
-    const [timeRange, setTimeRange] = useState(HelperFunctions.time_ranges.medium);
+    const [timeRange, setTimeRange] = useState(time_ranges.medium);
 
     useEffect(() => {
         fetchArtists();

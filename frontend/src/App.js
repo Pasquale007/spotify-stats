@@ -27,7 +27,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route element={<RequireAuth />}>
-          <Route path="/mix" element={<Mix />} />
+            <Route path="/mix" element={<Mix />} />
             <Route path="/tracks" element={<Tracks />} />
             <Route path="/artists" element={<Artists />} />
             <Route path="/follower" element={<FollowedArtists />} />

@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
-import Track from "../Track/Track";
-import style from './DisplayGroup.module.css'
 import { Link } from 'react-router-dom';
 
-export default function DisplayGroup({ myData, title, fontColor, linkToMore }) {
-    const [data, setData] = useState([]);
+import Track from "../Track/Track";
+import style from "./DisplayGroup.module.css";
+
+type props = {
+    myData: Array<Track>,
+    title: string,
+    fontColor: string,
+    linkToMore: string,
+}
+export default function DisplayGroup({ myData, title, fontColor, linkToMore }: props) {
+    const [data, setData] = useState<Array<Track>>([]);
 
     useEffect(() => {
         setData(myData);

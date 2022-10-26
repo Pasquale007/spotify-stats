@@ -4,22 +4,26 @@ import spotify_icon from '../../assets/Spotify_Icon_RGB_Green.png'
 
 import { me } from '../../_defaultValues'
 
-export default function DetailedTracks({ data }) {
-    const [track, setTrack] = useState(data);
+type props = {
+    data: Track
+}
 
-    function getArtists(artists) {
-        let result = "";
+export default function DetailedTracks({ data }: props) {
+    const [track, setTrack] = useState<Track>(data);
+
+    function getArtists(artists: Array<Artist>) {
+        let result: string = "";
         for (let i = 0; i < artists.length; i++) {
             result += artists[i].name + ", ";
         }
         return result.slice(0, result.length - 2);
     }
 
-    function getGenre(genres) {
+    function getGenre(genres: Array<string>) {
         if (!genres || genres.length === 0) {
             return "---";
         }
-        let result = "";
+        let result: string = "";
         for (let i = 0; i < genres.length; i++) {
             let genre = genres[i];
             if (result.includes(", " + genre + ",")) {
@@ -31,12 +35,11 @@ export default function DetailedTracks({ data }) {
         return result.slice(0, result.length - 2);
     }
 
-    function capitalizeFirstLetter(string) {
+    function capitalizeFirstLetter(string: string) {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     }
 
     function click() {
-        console.log(track.id);
         window.location.href = me + "/details/" + track.id;
     }
 
@@ -50,7 +53,7 @@ export default function DetailedTracks({ data }) {
                 <p> {capitalizeFirstLetter(track.album.album_type)}: {track.album.name}</p>
                 <p>Artist:</p>
                 <p> {getArtists(track.album.artists)}</p>
-                <p> Genres: {getGenre(track.genres)}</p>
+                <p> Genres: {getGenre(track?.genres)}</p>
             </div>
         </div >
     );

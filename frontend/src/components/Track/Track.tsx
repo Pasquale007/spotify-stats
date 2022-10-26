@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function Track({ myTrack, fontColor }) {
+type props = {
+    myTrack: any,
+    fontColor: string,
+}
+
+export default function Track({ myTrack, fontColor }: props) {
     const [track, setTrack] = useState(myTrack);
 
     return (

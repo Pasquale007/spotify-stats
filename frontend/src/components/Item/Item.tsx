@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import style from './Item.module.css'
 
-function Item({ content, link }) {
+type props = {
+    content: string,
+    link: string
+}
+
+function Item({ content, link }: props) {
 
     return (
         <Link to={link} style={{ textDecoration: 'none' }}>

@@ -3,8 +3,12 @@ import { useState } from 'react';
 import style from './Cluster.module.css'
 import note from '../../assets/icons/note.svg'
 
-export default function Cluster({ data }) {
-    const [cluster, setCluster] = useState(data);
+type props = {
+    data: Array<string>
+}
+
+export default function Cluster({ data }: props) {
+    const [cluster, setCluster] = useState<Array<string>>(data);
 
     return (
         <div className={style.main}>

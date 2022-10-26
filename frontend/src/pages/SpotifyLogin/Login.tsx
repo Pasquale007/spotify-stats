@@ -27,7 +27,7 @@ export default function SpotifyLoginPage() {
         </div>
     );
 
-    function generateRandomString(length) {
+    function generateRandomString(length: number) {
         var result = '';
         var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
