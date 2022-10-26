@@ -11,7 +11,7 @@ export default function Playlist({ data }: props) {
     const [playlist, setPlaylist] = useState<Playlist>(data);
 
     function getImage() {
-        let image: string = playlist?.images[1]?.url || playlist?.images[0]?.url;
+        let image: string = playlist.images[1]?.url || playlist.images[0].url;
         return image;
     }
 
@@ -21,10 +21,10 @@ export default function Playlist({ data }: props) {
             <div className={style.data}>
                 <img src={spotify_icon} width={"100px"} />
                 <hr></hr>
-                <p>{playlist?.name}</p>
-                <p>Owner: {playlist?.owner?.display_name}</p>
-                <p>Total of {playlist?.tracks?.total} tracks</p>
-                <p>Description:{playlist?.description}</p>
+                <p>{playlist.name}</p>
+                <p>Owner: {playlist.owner?.display_name}</p>
+                <p>Total of {playlist.tracks?.total} tracks</p>
+                <p>Description:{playlist.description}</p>
             </div>
         </div>
     );

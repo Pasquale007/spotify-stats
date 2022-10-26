@@ -1,10 +1,11 @@
 declare module "*.module.css";
+declare module "*.css";
 declare module "*.svg";
 declare module "*.png";
 
 interface Track {
-    genres: Array<string>,
     id: number,
+    genres: Array<string>,
     popularity: number,
     available_markets: Array<any>,
     duration_ms: number,
@@ -13,58 +14,71 @@ interface Track {
     release_date_precision: string,
     total_tracks: number,
     type: string,
-    uri: string,
-    album: {
-        name: string,
-        album_type: string,
-        artists: Array<Artist>,
-        images: Array<Image>,
-    },
+    album: Album,
     genres?: {
         length: number,
     },
-    available_markets: Array<string>,
-    external_urls: {
-        spotify: string
-    },
+    external_urls: external_urls,
     href: string,
-    images: Array<Image>
+    images: Array<Image>,
+    restrictions?: restrictions,
 }
 
-interface Artist {
-    display_name?: string,
+interface Album {
     id: number,
+    name: string,
     href: string,
-    name?: string,
     type: string,
     uri: string,
-    external_urls: {
-        spotify: string
-    },
+    available_markets: Array<string>,
+    album_type: string,
+    artists?: Array<Artist>,
+    images: Array<Image>,
+    tracks: Array<Track>,
+    total_tracks: number,
+    release_date: string,
+    release_date_precision: string,
+    restrictions?: restrictions,
+}
+interface Artist {
+    display_name?: string,
+    id?: number,
+    href?: string,
+    name?: string,
+    popularity?: number,
+    type?: string,
+    images?: Array<Image>,
+    uri?: string,
+    external_urls?: external_urls,
+    followers?: Follower,
+    genres?: Array<string>,
 
 }
 
 interface Playlist {
     id: number,
     href: string,
-    name: string,
+    name?: string,
     images: Array<Image>,
     uri: string,
     type: string,
-    tracks: {
+    tracks?: {
         href: string,
-        total: number,
+        items: Array<Track>,
+        limit: integer,
+        next: string,
+        offset: integer,
+        previous: string,
+        total: integer,
     },
-    snapshot_id: string,
-    public: boolean,
-    primary_color: any,
-    owner: Artist,
-    collaborative: boolean,
-    description: string,
-    external_urls:
-    {
-        spotify: string
-    },
+    follwers?: Follower,
+    snapshot_id?: string,
+    public?: boolean,
+    primary_color?: any,
+    owner?: Artist,
+    collaborative?: boolean,
+    description?: string,
+    external_urls?: external_urls,
 
 }
 
@@ -72,4 +86,16 @@ interface Image {
     height: number,
     width: number,
     url: string,
+}
+
+interface external_urls {
+    spotify?: string
+}
+interface restrictions {
+    reason: string,
+}
+
+interface Follower {
+    href?: string,
+    total?: number
 }

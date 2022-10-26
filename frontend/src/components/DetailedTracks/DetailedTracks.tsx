@@ -52,7 +52,7 @@ export default function DetailedTracks({ data }: props) {
                 <p> Name: {track.name}</p>
                 <p> {capitalizeFirstLetter(track.album.album_type)}: {track.album.name}</p>
                 <p>Artist:</p>
-                <p> {getArtists(track.album.artists)}</p>
+                <p> {getArtists(track.album.artists!)}</p>
                 <p> Genres: {getGenre(track?.genres)}</p>
             </div>
         </div >
