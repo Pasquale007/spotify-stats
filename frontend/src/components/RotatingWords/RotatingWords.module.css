@@ -1,0 +1,74 @@
+.rotatingWords {
+    box-sizing: content-box;
+    height: 50px;
+    padding: 30px 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.words {
+    overflow: hidden;
+}
+
+.rotatingSpan {
+    display: block;
+    height: 100%;
+    padding-left: 10px;
+    animation: spin_words 12s infinite;
+}
+
+.rotatingSpan h1 {
+    color: var(--primary-color);
+}
+
+
+@keyframes spin_words {
+    15% {
+        transform: translateY(-112%);
+    }
+
+    25% {
+        transform: translateY(-100%);
+    }
+
+    40% {
+        transform: translateY(-212%);
+    }
+
+    50% {
+        transform: translateY(-200%);
+    }
+
+    65% {
+        transform: translateY(-312%);
+    }
+
+    75% {
+        transform: translateY(-300%);
+    }
+
+    90% {
+        transform: translateY(-412%);
+    }
+
+    100% {
+        transform: translateY(-400%);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .displayGroup {
+        margin-bottom: 400px;
+    }
+
+    .rotatingWords {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .words {
+        overflow: hidden;
+        height: 40px;
+    }
+
+}

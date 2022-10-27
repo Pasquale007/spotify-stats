@@ -1,0 +1,85 @@
+.main {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10%;
+    width: 100%;
+}
+
+.root {
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+label {
+    color: whitesmoke;
+}
+
+.recommendations {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.offer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 70%;
+}
+
+.offer h2 {
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#infinitiveScrollPlaceholder {
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    height: 500px;
+    top: -1200px;
+    width: 80%;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .displayGroup {
+        margin-bottom: 400px;
+    }
+
+    .offer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .offer h2 {
+        order: -1;
+    }
+
+    .recommendations {
+        flex-direction: column;
+    }
+}
