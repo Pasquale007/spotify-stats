@@ -75,7 +75,7 @@ interface Playlist {
     snapshot_id?: string,
     public?: boolean,
     primary_color?: any,
-    owner?: Artist,
+    owner: Artist,
     collaborative?: boolean,
     description?: string,
     external_urls?: external_urls,

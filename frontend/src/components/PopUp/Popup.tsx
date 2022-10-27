@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivePlaylistContext } from "../../Contexts";
 import HelperFunctions from "../../HelperFunctions";
@@ -5,8 +6,8 @@ import ToggleSwitch from "../Switch/ToggleSwitch";
 import style from './Popup.module.css'
 
 export default function Popup() {
-    const [editable, setEditable] = useState(false);
-    const playlist = useContext(ActivePlaylistContext);
+    const [editable, setEditable] = useState<boolean>(false);
+    const playlist = useContext<Playlist>(ActivePlaylistContext);
 
     useEffect(() => {
         let popup = document.getElementById(style.root);
@@ -17,9 +18,9 @@ export default function Popup() {
     }, [editable])
 
     useEffect(() => {
-        if (playlist) {
-            let playlistName = JSON.parse(sessionStorage.getItem("user")).display_name;
-            if (playlist.owner.display_name === playlistName) {
+        if (playlist && playlist.id !== -1) {
+            let userName = JSON.parse(sessionStorage.getItem("user")!).display_name;
+            if (playlist.owner.display_name === userName) {
                 setEditable(true);
             } else {
                 setEditable(false);
@@ -29,20 +30,20 @@ export default function Popup() {
     }, [playlist])
 
     function open() {
-        let element = document.getElementById(style.root);
+        let element: HTMLElement = document.getElementById(style.root)!;
         element.style.transform = "translateX(0vh)"
         element.style.transform = "scale(150%,150%)"
     }
 
     function close() {
-        let element = document.getElementById(style.root);
+        let element: HTMLElement = document.getElementById(style.root)!;
         element.style.transform = "translateX(-300vh)"
     }
 
     //Wird nicht aufgerufen
     async function submit() {
         console.log("Error. Not implemented yet. Sorry");
-        let response = await HelperFunctions.updatePlaylist(playlist.id);
+        let response: AxiosResponse = await HelperFunctions.updatePlaylist(playlist.id);
         console.log(response);
         close();
     }
@@ -61,12 +62,12 @@ export default function Popup() {
                 </label>
                 <label htmlFor="public">
                     Public:
-                    <ToggleSwitch value={playlist?.public} name="public" />
+                    <ToggleSwitch value={playlist?.public || false} name="public" />
 
                 </label>
                 <label htmlFor="collab">
                     Collaborative:
-                    <ToggleSwitch value={playlist?.collaborative} name="collab" />
+                    <ToggleSwitch value={playlist?.collaborative || false} name="collab" />
                 </label>
                 <input type="submit" value="Submit" />
                 <p>* are required</p>
