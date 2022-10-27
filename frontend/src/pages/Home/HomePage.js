@@ -1,5 +1,5 @@
 import style from './HomePage.module.css'
-import HelperFunctions from '../../HelperFunctions.ts';
+import HelperFunctions from '../../HelperFunctions';
 import { useEffect, useState } from 'react';
 import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 import Cluster from '../../components/Cluster/Cluster';

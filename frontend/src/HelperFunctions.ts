@@ -130,6 +130,9 @@ export default class HelperFunctions {
                     }
                 }
             }
+            if (list.length > 5) {
+                list.length = 5;
+            }
             for (let i = 0; i < list.length; i++) {
                 genres += list[i].name + ",";
             }

@@ -34,7 +34,7 @@ export default function Navigation() {
         return <span>
             <img src={defaultUser}
                 id={style.imageID} />
-            <b>{JSON.parse(sessionStorage.getItem('user')!).display_name}</b>
+            <b>{JSON.parse(sessionStorage.getItem('user')!).display_name || "User"}</b>
         </span>
     };
 
