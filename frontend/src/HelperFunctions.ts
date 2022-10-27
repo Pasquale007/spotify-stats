@@ -246,19 +246,14 @@ export default class HelperFunctions {
         return genres;
     }
 
-    static async updatePlaylist(playlistId: number) {
-        let promise: AxiosResponse<any> = await axios.put(endpoint + "/playlists/" + playlistId, {
-            name: "",
-            public: false,
-            collaborative: false,
-            description: "Test"
-        }, {
+    static async updatePlaylist(playlistId: number, data: any) {
+        console.log(data)
+        let promise: AxiosResponse<any> = await axios.put(endpoint + "/playlists/" + playlistId, data, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         }
         )
-        console.log(promise);
         return promise;
     }
 }

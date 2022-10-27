@@ -1,31 +1,27 @@
-import { AxiosResponse } from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { ActivePlaylistContext } from "../../Contexts";
 import HelperFunctions from "../../HelperFunctions";
 import ToggleSwitch from "../Switch/ToggleSwitch";
 import style from './Popup.module.css'
 
 export default function Popup() {
-    const [editable, setEditable] = useState<boolean>(false);
+    const refName = useRef<HTMLInputElement>(null);
+    const refDesc = useRef<HTMLTextAreaElement>(null);
     const playlist = useContext<Playlist>(ActivePlaylistContext);
 
     useEffect(() => {
-        let popup = document.getElementById(style.root);
-        if (editable === false) {
-            //sth like this
-            // popup.style.pointerEvents = "none";
-        }
-    }, [editable])
+        console.log(playlist);
+    }, [playlist]);
 
     useEffect(() => {
         if (playlist && playlist.id !== -1) {
             let userName = JSON.parse(sessionStorage.getItem("user")!).display_name;
             if (playlist.owner.display_name === userName) {
-                setEditable(true);
+                open();
             } else {
-                setEditable(false);
+                alert("You dont have permission to edit this playlist.")
             }
-            open();
+
         }
     }, [playlist])
 
@@ -41,37 +37,43 @@ export default function Popup() {
     }
 
     //Wird nicht aufgerufen
-    async function submit() {
-        console.log("Error. Not implemented yet. Sorry");
-        let response: AxiosResponse = await HelperFunctions.updatePlaylist(playlist.id);
-        console.log(response);
-        close();
+    async function handleSubmit() {
+        let data: any = {
+            name: refName?.current?.value || "",
+            description: refDesc?.current?.value || "",
+            public: playlist.public,
+            collaborative: playlist.collaborative,
+        }
+        HelperFunctions.updatePlaylist(playlist.id, data).then((e) => {
+            close();
+            console.log(e);
+            // window.location.reload();
+        }).catch(e => { console.log("Error"); console.log(e) });
     }
 
     return (
         <div id={style.root}>
             <h2 id={style.close} onClick={close}>X</h2>
-            <form className={style.formInput} onSubmit={e => submit}>
+            <div className={style.formInput} >
                 <label htmlFor="name">
                     Name*:
-                    <input name="name" type="text" defaultValue={playlist?.name} required></input>
+                    <input name="name" type="text" ref={refName} defaultValue={playlist?.name} required></input>
                 </label>
                 <label htmlFor="desc">
                     Description:
-                    <textarea name="desc" id={style.textarea} defaultValue={playlist?.description}></textarea>
+                    <textarea name="desc" id={style.textarea} ref={refDesc} defaultValue={playlist?.description}></textarea>
                 </label>
                 <label htmlFor="public">
                     Public:
-                    <ToggleSwitch value={playlist?.public || false} name="public" />
-
+                    <ToggleSwitch name="public" />
                 </label>
-                <label htmlFor="collab">
+                <label htmlFor="collaborative">
                     Collaborative:
-                    <ToggleSwitch value={playlist?.collaborative || false} name="collab" />
+                    <ToggleSwitch name="collaborative" />
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" onClick={handleSubmit} />
                 <p>* are required</p>
-            </form>
+            </div>
         </div>
     );
 }
