@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -r node_modules
+npm i
+npm run build
+/usr/bin/nohup http-server --proxy http://localhost:8081? ./build & #for redirect from external websites use the proxy
