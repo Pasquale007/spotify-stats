@@ -232,7 +232,6 @@ export default class HelperFunctions {
         return [];
     }
 
-
     static async getArtistsGenres(track: any) { //is tis an album? not a track?
         // console.log(track)
         let genres: Array<any> = [];

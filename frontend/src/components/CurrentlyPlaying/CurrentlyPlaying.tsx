@@ -15,9 +15,8 @@ export default function CurrentlyPlaying() {
     }
 
     return (
-
         <div>
-            <h1>Current Song: {track?.name}</h1>
+            {track && <h1>Current Song: {track?.name}</h1>}
         </div>
     );
 }
