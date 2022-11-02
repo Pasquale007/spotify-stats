@@ -6,7 +6,7 @@ type props = {
     phraselow?: string
 }
 export default function Hero({ phrasetop, phraselow }: props) {
-    const phrase1 = phrasetop || "Die Musik drückt aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.";
+    const phrase1 = phrasetop || "\"Die Musik drückt aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist.\"";
     //const phrase1 = "Peace. Love.";
     const phrase2 = phraselow || "~ Viktor Hugo";
     //const phrase2 = "Music";
