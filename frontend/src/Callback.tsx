@@ -5,7 +5,7 @@ import Hero from './components/Hero/Hero';
 
 export default function Callback() {
     const querystring = require('querystring');
-    var errorMessage = "";
+    var errorMessage: string = "";
 
     useEffect(() => {
         //if user denied the request
@@ -16,9 +16,9 @@ export default function Callback() {
             exit(error);
         }
 
-        let props = window.location.href.split("code=")[1];
-        let code = props.split("&state=")[0];
-        let state = props.split("&state=")[1];
+        let props: string = window.location.href.split("code=")[1];
+        let code: string = props.split("&state=")[0];
+        let state: string = props.split("&state=")[1];
 
         //if not equal -> reject. Wrong request
         if (state !== sessionStorage.getItem("state")) {
@@ -29,12 +29,12 @@ export default function Callback() {
         requestData(code);
     }, [])
 
-    function exit(error) {
+    function exit(error: string) {
         alert(errorMessage + error);
         window.location.href = me;
     }
 
-    async function requestData(givenCode) {
+    async function requestData(givenCode: string) {
         let data = {
             code: givenCode,
             redirect_uri: REDIRECT_URI,
@@ -55,14 +55,14 @@ export default function Callback() {
             });
     }
 
-    function assignData(data) {
+    function assignData(data: any) {
         sessionStorage.setItem("accessToken", data.access_token);
         sessionStorage.setItem("refreshToken", data.refresh_token);
         sessionStorage.setItem("tokenType", data.token_type);
         fetchUserInfos();
     }
 
-    const fetchUserInfos = async (e) => {
+    const fetchUserInfos = async () => {
         const { data } = await axios.get(endpoint + "/me", {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')} `,
@@ -75,7 +75,7 @@ export default function Callback() {
     }
 
     return (
-        <div style={{ marignLeft: "auto" }}>
+        <div>
             <Hero phrasetop="Pending..." phraselow=" " />
         </div>
     );
