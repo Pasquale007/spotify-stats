@@ -20,7 +20,9 @@ export default function HomePage() {
         //get the element for infinitive loading
         let scrollElement = document.getElementById(style.infinitiveScrollPlaceholder)
         let observer = new IntersectionObserver(element => { loadContent() })
-        observer.observe(scrollElement);
+        if (scrollElement) {
+            observer.observe(scrollElement);
+        }
         loadContent();
     }, [])
 
@@ -53,16 +55,22 @@ export default function HomePage() {
             </section>
             <section id="recommendations">
                 <h1>Our suggestions for you:</h1>
-                <div className={style.recommendations}>
-                    {recommendations?.map((track) => {
-                        return (
-                            <DetailedTracks key={track.name + "_" + track.id} data={track} />
-                        );
-                    })}
-                    <div id={style.infinitiveScrollPlaceholder}>
+                {sessionStorage.getItem('user') === "{}" || !sessionStorage.getItem('user') ?
+                    <h2 style={{ marginBottom: "50px" }}>
+                        It seems you're currently not logged in. Please log in to receive personal suggestions
+                    </h2>
+                    :
+                    < div className={style.recommendations}>
+                        {recommendations?.map((track) => {
+                            return (
+                                <DetailedTracks key={track.name + "_" + track.id} data={track} />
+                            );
+                        })}
+                        <div id={style.infinitiveScrollPlaceholder}>
+                        </div>
                     </div>
-                </div>
-            </section>
+                }
+            </section >
         </div >
     );
 }

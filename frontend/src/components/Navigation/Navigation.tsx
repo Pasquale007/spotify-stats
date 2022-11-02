@@ -20,11 +20,11 @@ export default function Navigation() {
                 rootMargin: '-1px',
                 threshold: [1]
             }
+
         );
         if (stickyElm != null) {
             observer.observe(stickyElm)
         }
-
         let image: string = JSON.parse(sessionStorage.getItem('user')!)?.images?.at(0)?.url || defaultUserImage;
         setDefaultUser(image);
 
