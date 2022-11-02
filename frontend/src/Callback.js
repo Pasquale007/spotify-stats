@@ -5,26 +5,34 @@ import Hero from './components/Hero/Hero';
 
 export default function Callback() {
     const querystring = require('querystring');
+    var errorMessage = "";
 
     useEffect(() => {
+        //if user denied the request
+        if (window.location.href.split("?error=")[1]) {
+            let error = window.location.href.split("?error=")[1];
+            error = error.split("&")[0];
+            errorMessage = "An error occurred. Please try again. Error: ";
+            exit(error);
+        }
+
         let props = window.location.href.split("code=")[1];
         let code = props.split("&state=")[0];
         let state = props.split("&state=")[1];
 
-        //if not equal -> reject. Wron request
+        //if not equal -> reject. Wrong request
         if (state !== sessionStorage.getItem("state")) {
             console.log("Not same state. Error -> Break!");
             return;
         }
 
-        //if user denied the request
-        if (!code) {
-            console.log("User didn't accept the request. No access Token available");
-            return;
-        }
         requestData(code);
-        //requestDataByCode();
     }, [])
+
+    function exit(error) {
+        alert(errorMessage + error);
+        window.location.href = me;
+    }
 
     async function requestData(givenCode) {
         let data = {
@@ -67,7 +75,7 @@ export default function Callback() {
     }
 
     return (
-        <div style={{ "marign-left": "auto" }}>
+        <div style={{ marignLeft: "auto" }}>
             <Hero phrasetop="Pending..." phraselow=" " />
         </div>
     );
