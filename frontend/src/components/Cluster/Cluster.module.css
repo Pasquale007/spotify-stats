@@ -32,9 +32,26 @@
     margin-top: 0%;
 }
 
+.blob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 260px;
+    height: 260px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/blob.svg");
+
+}
+
+.blob h4 {
+    margin: 65px;
+    margin-left: 50px;
+}
+
 .box img {
     position: relative;
-    top: 30px;
+    top: 80px;
     margin-right: auto;
     z-index: 200;
 }

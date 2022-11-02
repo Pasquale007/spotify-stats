@@ -67,7 +67,7 @@ export default function HomePage() {
                     < div className={style.recommendations}>
                         {recommendations?.map((track) => {
                             return (
-                                <DetailedTracks key={track.name + "_" + track.id} data={track} />
+                                <DetailedTracks key={track.id} data={track} />
                             );
                         })}
                         <div id={style.infinitiveScrollPlaceholder}>

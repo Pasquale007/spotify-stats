@@ -17,7 +17,7 @@ export default function Cluster({ data }: props) {
                     return (
                         <div key={field} className={style.box}>
                             <img src={note} width={"75px"} height={"75px"} />
-                            <div className={style.dataField} >
+                            <div className={style.blob} >
                                 <h4>{field}</h4>
                             </div>
                         </div>
