@@ -63,7 +63,8 @@ export default function Tracks() {
                 {genres.map(genre => {
                     return (
                         <div key={genre.name}>
-                            <p>{genre.name}: {genre.number}</p>
+                            <p>
+                                {genres.indexOf(genre) + 1}. {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}: {genre.number}</p>
                         </div>
                     );
                 }
