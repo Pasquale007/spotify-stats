@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import DetailedTracks from '../../components/DetailedTracks/DetailedTracks';
 import Cluster from '../../components/Cluster/Cluster';
 import Hero from '../../components/Hero/Hero';
+import CurrentlyPlaying from '../../components/CurrentlyPlaying/CurrentlyPlaying';
 import RotatingWords from '../../components/RotatingWords/RotatingWords';
 
 export default function HomePage() {
@@ -41,6 +42,9 @@ export default function HomePage() {
         <div className={style.root}>
             <section id="hero">
                 <Hero />
+            </section>
+            <section id="currentlyPlaying">
+                <CurrentlyPlaying />
             </section>
             <RotatingWords />
             <section id="offer">

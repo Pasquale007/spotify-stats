@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import querystring from 'querystring';
 import { AUTH_ENDPOINT, CLIENT_ID, CLIENT_SECRET, endpoint } from "./_defaultValues";
 
@@ -164,12 +164,12 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchFollowedArtists(limit = 50) {
+    static async fetchFollowedArtists(limit: number = 50) {
         let data = {
             type: 'artist',
             limit: limit,
         }
-        let promise = await axios.get(endpoint + "/me/following?" + querystring.stringify(data), {
+        let promise: AxiosResponse<any> = await axios.get(endpoint + "/me/following?" + querystring.stringify(data), {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -180,11 +180,11 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async fetchUserPlaylists(limit = 50) {
+    static async fetchUserPlaylists(limit: number = 50) {
         let data = {
             limit: limit,
         }
-        let promise = await axios.get(endpoint + "/me/playlists?" + querystring.stringify(data), {
+        let promise: AxiosResponse<any> = await axios.get(endpoint + "/me/playlists?" + querystring.stringify(data), {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -195,8 +195,8 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async getPlaylistTracks(id: any) {
-        let promise = await axios.get(endpoint + "/playlists/" + id + "/tracks", {
+    static async getPlaylistTracks(id: string) {
+        let promise: AxiosResponse<any> = await axios.get(endpoint + "/playlists/" + id + "/tracks", {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -208,8 +208,8 @@ export default class HelperFunctions {
     }
 
 
-    static async getTrackInfo(track: any) {
-        let promise = await axios.get(endpoint + "/tracks/" + track.id, {
+    static async getTrackInfo(track: Track) {
+        let promise: AxiosResponse<any> = await axios.get(endpoint + "/tracks/" + track.id, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -220,8 +220,8 @@ export default class HelperFunctions {
         return [];
     }
 
-    static async getTrackInfoHref(track: any) {
-        let promise = await axios.get(track.href, {
+    static async getTrackInfoHref(track: Track) {
+        let promise: AxiosResponse<any> = await axios.get(track.href, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
             }
@@ -233,7 +233,8 @@ export default class HelperFunctions {
     }
 
 
-    static async getArtistsGenres(track: any) {
+    static async getArtistsGenres(track: any) { //is tis an album? not a track?
+        console.log(track)
         let genres: Array<any> = [];
         for (let i = 0; i < track.artists.length; i++) {
             let promise = await axios.get(track.artists[i].href, {
@@ -247,7 +248,6 @@ export default class HelperFunctions {
     }
 
     static async updatePlaylist(playlistId: number, data: any) {
-        console.log(data)
         let promise: AxiosResponse<any> = await axios.put(endpoint + "/playlists/" + playlistId, data, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -255,5 +255,19 @@ export default class HelperFunctions {
         }
         )
         return promise;
+    }
+
+
+    //currently Playing
+    static async fetchCurrentSong(): Promise<Track | undefined> {
+        let promise: AxiosResponse<any> = await axios.get(endpoint + "/me/player/currently-playing", {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+            }
+        })
+        if (promise) {
+            return promise.data.item;
+        }
+        return undefined;
     }
 }
