@@ -234,7 +234,7 @@ export default class HelperFunctions {
 
 
     static async getArtistsGenres(track: any) { //is tis an album? not a track?
-        console.log(track)
+        // console.log(track)
         let genres: Array<any> = [];
         for (let i = 0; i < track.artists.length; i++) {
             let promise = await axios.get(track.artists[i].href, {
